@@ -2,6 +2,13 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+
+followings = db.Table('followings',
+    db.Column('id', db.Integer, primary_key=True),
+    db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
+    db.Column('followed_id', db.Integer, db.ForeignKey('users.id'))
+)
+
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
@@ -9,6 +16,16 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
+  lastListen = db.Column(db.Integer, db.ForeignKey('albums.id'))
+
+  plays = db.relationship('Play', backref='users')
+  playlists = db.relationship('Playlist', backref='users')
+  followed = db.relationship(
+        'User', secondary=followings,
+        primaryjoin=(followings.c.follower_id == id),
+        secondaryjoin=(followings.c.followed_id == id),
+        backref=db.backref('followings', lazy='dynamic'), lazy='dynamic')
+
 
 
   @property
