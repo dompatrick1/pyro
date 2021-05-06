@@ -25,11 +25,8 @@ function Player() {
         audio.addEventListener('ended', function() {
             if (songIndex < songs.length - 1) {
                 setSongIndex(songIndex + 1)
-                // audio.play()
             } else setSongIndex(0)
         })}
-
-
 
     function playSongs(e) {
         e.preventDefault()
