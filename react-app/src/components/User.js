@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import LogoutButton from "./auth/LogoutButton"
+import Player from './Player/Player'
 
 function User() {
   const [user, setUser] = useState({});
@@ -25,14 +27,10 @@ function User() {
   return (
     <ul>
       <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
         <strong>Username</strong> {user.username}
       </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
+      <LogoutButton/>
+      <Player/>
     </ul>
   );
 }
