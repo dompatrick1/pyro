@@ -6,7 +6,7 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
-import User from "./components/User";
+import Main from "./components/Main/Main";
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 import Home from "./components/home/home"
@@ -29,10 +29,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <NavBar /> */}
       <Switch>
         <ProtectedRoute path="/users/:userId" exact={true} >
-          <User />
+          <Main />
         </ProtectedRoute>
         <Route path="/" exact={true}>
           <Home />

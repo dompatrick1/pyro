@@ -5,8 +5,8 @@ album_routes = Blueprint('albums', __name__)
 
 @album_routes.route('/')
 def all_albums():
-    albums = Album.query.get(id)
-    return albums.to_dict()
+    albums = Album.query.all()
+    return {"albums": [album.to_dict() for album in albums]}
 
 @album_routes.route('/<int:id>')
 def get_album(id):

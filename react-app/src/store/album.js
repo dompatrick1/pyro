@@ -41,7 +41,7 @@ export const getAlbumsThunk = () => async (dispatch) => {
       case GET_ALBUMS:
         const albumsPayload = action.payload
         const newAlbums = {};
-        for (const album of albumsPayload.farms) {
+        for (const album of albumsPayload.albums) {
           newAlbums[album.id] = album
         }
         return newAlbums;

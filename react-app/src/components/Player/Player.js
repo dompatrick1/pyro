@@ -1,25 +1,24 @@
 import React, {useState, useEffect} from 'react'
+import {useDispatch, useSelector} from "react-redux"
+import {getAlbumSongsThunk} from "../../store/song"
 import "./player.css"
 
-function Player() {
-    let songs = [
-        {name: "", url: "/Needle.mp3"},
-        {name: "Rock-n-Roll Never Forgets", url: "https://pyro-songs.s3.us-east-2.amazonaws.com/Bob-Seger-Rock-n-Roll-Never-Forgets.mp3"},
-        {name: "Night Moves", url:'https://pyro-songs.s3.us-east-2.amazonaws.com/Bob-Seger-Night-Moves.mp3'},
-        {name: "The Fire Down Below", url: "https://pyro-songs.s3.us-east-2.amazonaws.com/Bob-Seger-The-Fire-Down-Below.mp3"},
-        {name: "Sunburst", url: "https://pyro-songs.s3.us-east-2.amazonaws.com/Bob-Seger-Sunburst.mp3"},
-        {name: "Sunspot Baby", url: "https://pyro-songs.s3.us-east-2.amazonaws.com/Bob-Seger-Sunspot-Baby.mp3"},
-        {name: "Main Street", url: "https://pyro-songs.s3.us-east-2.amazonaws.com/Bob-Seger-Main-Street.mp3"},
-        {name: "Come To Poppa", url: "https://pyro-songs.s3.us-east-2.amazonaws.com/Bob-Seger-Come-To-Poppa.mp3"},
-        {name: "Ship of Fools", url: "https://pyro-songs.s3.us-east-2.amazonaws.com/Bob-Seger-Ship-Of-Fools.mp3"},
-        {name: "Mary Lou", url: "https://pyro-songs.s3.us-east-2.amazonaws.com/Bob-Seger-Mary-Lou.mp3"}
-        ]
+function Player(props) {
+    const dispatch = useDispatch()
+    let songs = Object.values(useSelector(state => state.songs))
 
     const [songIndex, setSongIndex] = useState(0)
     const [playing, setPlaying] = useState(true)
+    const [needle, setNeedle] = useState(false)
 
 
     const audio = document.getElementById("audio")
+    const audio1 = document.getElementById("audio1")
+
+    if (audio1 && songIndex === 0 && needle === false) {
+        audio1.play()
+        setNeedle(true)
+    }
 
     if (audio) {
         audio.addEventListener('ended', function() {
@@ -48,34 +47,43 @@ function Player() {
     }
 
     function prevSong(e) {
+        e.preventDefault()
         if (songIndex > 0) {
             setSongIndex(songIndex - 1)
         } else setSongIndex(songs.length - 1)
     }
 
     useEffect(() => {
-        if (audio) audio.play()
-    }, [songIndex])
+        dispatch(getAlbumSongsThunk(props.selectAlbumId))
+        if (audio) {
+            audio.play()
+            setPlaying(false)
+        }
+    }, [songIndex, props, dispatch])
 
     return (
         <div>
+            <button onClick={e => prevSong(e)}>Previous</button>
             {playing === true ?
                 <button onClick={e => playSongs(e)}>Play</button>
             : <button onClick={e => playSongs(e)}>Pause</button>}
             <button onClick={e => nextSong(e)}>Next</button>
-            <button onClick={e => prevSong(e)}>Previous</button>
-            <h1>{songs[songIndex].name}</h1>
-                {songIndex === 0 ?
-                    <audio id="audio" src="/Needle.mp3"></audio>
-                :
+            {songs[songIndex] ?
+                <h1>{songs[songIndex].songTitle}</h1>
+            : null}
+                {songs.length ?
+                <div>
+                <audio id="audio1" src="/Needle.mp3"></audio>
+
                 <audio
                     id="audio"
                     controls
-                    src={songs[songIndex].url}>
+                    src={songs[songIndex].song}>
                     Your browser does not support the
                     <code>audio</code> element.
                 </audio>
-                }
+                </div>
+                : null}
         </div>
     )
 }

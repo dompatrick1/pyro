@@ -16,11 +16,11 @@ class Album(db.Model):
     playlistAlbums = db.relationship('PlaylistAlbum', backref='albums')
 
 
-def to_dict(self):
-    return {
-        "id": self.id,
-        "title": self.title,
-        "artist": self.artist,
-        "year": self.year,
-        "image": self.image,
-    }
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "artist": self.artist,
+            "year": self.year,
+            "image": self.image,
+        }
