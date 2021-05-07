@@ -38,6 +38,54 @@ def seed_songs():
             songTitle="Mary Lou",
             song="https://pyro-songs.s3.us-east-2.amazonaws.com/Bob-Seger-Mary-Lou.mp3", albumId=1
         ),
+        Song(
+            songTitle="Second Hand News",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Second-Hand-News.mp3", albumId=2
+        ),
+        Song(
+            songTitle="Dreams",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Dreams.mp3", albumId=2
+        ),
+        Song(
+            songTitle="Never Going Back Again",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Never-Going-Back-Again.mp3", albumId=2
+        ),
+        Song(
+            songTitle="Don't Stop",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Don't-Stop.mp3", albumId=2
+        ),
+        Song(
+            songTitle="Go Your Own Way",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Go-Your-Own-Way.mp3", albumId=2
+        ),
+        Song(
+            songTitle="Songbird",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Songbird.mp3", albumId=2
+        ),
+        Song(
+            songTitle="The Chain",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/The-Chain.mp3", albumId=2
+        ),
+        Song(
+            songTitle="You Make Loving Fun",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/You-Make-Loving-Fun.mp3", albumId=2
+        ),
+        Song(
+            songTitle="I Don't Want To Know",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Dont-Want-to-Know.mp3", albumId=2
+        ),
+        Song(
+            songTitle="Oh Daddy",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Oh-Daddy.mp3", albumId=2
+        ),
+        Song(
+            songTitle="Gold Dust Woman",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Gold-Dust-Woman.mp3", albumId=2
+        ),
+        Song(
+            songTitle="Silver Springs",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Silver-Springs.mp3", albumId=2
+        ),
     ]
 
     db.session.add_all(songs)

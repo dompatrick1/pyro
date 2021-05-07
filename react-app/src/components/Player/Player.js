@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import {getAlbumSongsThunk} from "../../store/song"
@@ -11,15 +12,30 @@ function Player(props) {
     const [playing, setPlaying] = useState(true)
     const [needle, setNeedle] = useState(false)
 
-
     const audio = document.getElementById("audio")
     const audio1 = document.getElementById("audio1")
+
+    // if songIndex or props changes, play song and change play button to pause
+    useEffect(() => {
+        if (audio) {
+            setPlaying(false)
+            audio.play()
+        }
+    }, [songIndex, props, dispatch])
+
+    // if props changes, start at first song and make needle play
+    useEffect(() => {
+        dispatch(getAlbumSongsThunk(props.selectAlbumId))
+        setSongIndex(0)
+        setNeedle(false)
+    }, [props])
 
     if (audio1 && songIndex === 0 && needle === false) {
         audio1.play()
         setNeedle(true)
     }
 
+    // If song ends, go to next song
     if (audio) {
         audio.addEventListener('ended', function() {
             if (songIndex < songs.length - 1) {
@@ -27,6 +43,7 @@ function Player(props) {
             } else setSongIndex(0)
         })}
 
+    // play and pause button
     function playSongs(e) {
         e.preventDefault()
 
@@ -38,14 +55,14 @@ function Player(props) {
             audio.pause()
         }
     }
-
+    // next
     function nextSong(e) {
         e.preventDefault()
         if (songIndex < songs.length - 1) {
             setSongIndex(songIndex + 1)
         } else setSongIndex(0)
     }
-
+    //previous
     function prevSong(e) {
         e.preventDefault()
         if (songIndex > 0) {
@@ -53,13 +70,6 @@ function Player(props) {
         } else setSongIndex(songs.length - 1)
     }
 
-    useEffect(() => {
-        dispatch(getAlbumSongsThunk(props.selectAlbumId))
-        if (audio) {
-            audio.play()
-            setPlaying(false)
-        }
-    }, [songIndex, props, dispatch])
 
     return (
         <div>

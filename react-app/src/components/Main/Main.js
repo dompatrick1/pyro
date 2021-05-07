@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Player from '../Player/Player'
 import {getAlbumsThunk} from "../../store/album"
 import SearchAlbums from '../SearchAlbums/SearchAlbums'
+import "./main.css"
 
 function Main() {
     const dispatch = useDispatch()
@@ -28,7 +29,7 @@ function Main() {
             <>
                 {albums[selectAlbumId - 1] ?
                     <div>
-                        <img src={albums[selectAlbumId - 1].image} alt={albums[selectAlbumId - 1].image}></img>
+                        <img className="playingAlbumImage" src={albums[selectAlbumId - 1].image} alt={albums[selectAlbumId - 1].image}></img>
                         <h2>{albums[selectAlbumId - 1].title}</h2>
                         <h3>{albums[selectAlbumId - 1].artist}</h3>
                     </div>
@@ -45,16 +46,18 @@ function Main() {
 
     return (
         <div>
-            {albums[0] ?
-                <button onClick={e => albumSelect(e, albums[0].id)}>
-                    <img src={albums[0].image} alt={albums[0].image}></img>
-                </button>
-            : null}
+            {albums.map(album => {
+                return (
+                    <button  onClick={e => albumSelect(e, album.id)}>
+                        <img className="albumImage" src={album.image} alt={album.image}></img>
+                    </button>
+                )
+            })}
             <div>
                 {inner}
             </div>
             <div>
-                <Player selectAlbumId={selectAlbumId}/>
+                <Player selectAlbumId={selectAlbumId} songIndex={0}/>
             </div>
         </div>
     )
