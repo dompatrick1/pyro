@@ -4,6 +4,7 @@ import session from './session'
 import albumsReducer from './album'
 import songsReducer from "./song";
 import lastPlayReducer from "./lastPlay"
+import playsReducer from "./play"
 
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     albums: albumsReducer,
     songs: songsReducer,
     lastPlays: lastPlayReducer,
+    plays: playsReducer,
 });
 
 let enhancer;

@@ -9,7 +9,6 @@ lastPlay_routes = Blueprint('lastPlays', __name__)
 @login_required
 def get_lastPlay(id):
     lastPlay = LastPlay.query.filter(LastPlay.userId == id).first()
-    print("lastPlay---------", lastPlay)
     return {"lastPlay": lastPlay.to_dict()}
 
 

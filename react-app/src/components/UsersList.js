@@ -13,10 +13,16 @@ function UsersList() {
     fetchData();
   }, []);
 
+
+  function follow(e) {
+    e.preventDefault()
+  }
+
   const userComponents = users.map((user) => {
     return (
       <li key={user.id}>
-        <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+        <p>{user.username}</p>
+        <button onClick={e => follow(e)}>Follow +</button>
       </li>
     );
   });

@@ -28,7 +28,6 @@ export const getLastPlayThunk = (userId) => async (dispatch) => {
     }
 
     const lastPlay = await response.json();
-    console.log("get last play response", lastPlay)
     dispatch(getLastPlay(lastPlay))
   }
 

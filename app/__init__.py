@@ -11,6 +11,8 @@ from .api.auth_routes import auth_routes
 from .api.album_routes import album_routes
 from .api.song_routes import song_routes
 from .api.lastPlay_routes import lastPlay_routes
+from .api.play_routes import play_routes
+from .api.following_routes import following_routes
 
 from .seeds import seed_commands
 
@@ -37,6 +39,8 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(album_routes, url_prefix='/api/albums')
 app.register_blueprint(song_routes, url_prefix='/api/songs')
 app.register_blueprint(lastPlay_routes, url_prefix='/api/lastPlays')
+app.register_blueprint(play_routes, url_prefix='/api/plays')
+app.register_blueprint(following_routes, url_prefix='/api/following')
 db.init_app(app)
 Migrate(app, db)
 
