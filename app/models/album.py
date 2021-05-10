@@ -10,7 +10,7 @@ class Album(db.Model):
     year = db.Column(db.String(4), nullable = False)
     image = db.Column(db.String(100), nullable = False)
 
-    users = db.relationship('User', backref='albums')
+    lastPlays = db.relationship('LastPlay', backref='albums')
     songs = db.relationship('Song', backref='albums')
     plays = db.relationship('Play', backref='albums')
     playlistAlbums = db.relationship('PlaylistAlbum', backref='albums')

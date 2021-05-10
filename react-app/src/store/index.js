@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import session from './session'
 import albumsReducer from './album'
 import songsReducer from "./song";
+import lastPlayReducer from "./lastPlay"
 
 
 const rootReducer = combineReducers({
     session,
     albums: albumsReducer,
     songs: songsReducer,
+    lastPlays: lastPlayReducer,
 });
 
 let enhancer;

@@ -16,8 +16,8 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
-  lastListen = db.Column(db.Integer, db.ForeignKey('albums.id'))
 
+  lastPlays = db.relationship('LastPlay', backref='users')
   plays = db.relationship('Play', backref='users')
   playlists = db.relationship('Playlist', backref='users')
   followed = db.relationship(
@@ -46,6 +46,5 @@ class User(db.Model, UserMixin):
     return {
       "id": self.id,
       "username": self.username,
-      "email": self.email,
-      "lastListen": self.lastListen
+      "email": self.email
     }
