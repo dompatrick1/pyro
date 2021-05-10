@@ -5,3 +5,4 @@ from .song import Song
 from .play import Play
 from .playlist import Playlist
 from .playlistAlbums import PlaylistAlbum
+from .lastPlayed import LastPlay
