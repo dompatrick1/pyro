@@ -5,6 +5,8 @@ import albumsReducer from './album'
 import songsReducer from "./song";
 import lastPlayReducer from "./lastPlay"
 import playsReducer from "./play"
+import followReducer from "./following";
+import playlistReducer from "./playlist";
 
 
 const rootReducer = combineReducers({
@@ -13,6 +15,8 @@ const rootReducer = combineReducers({
     songs: songsReducer,
     lastPlays: lastPlayReducer,
     plays: playsReducer,
+    follows: followReducer,
+    playlists: playlistReducer,
 });
 
 let enhancer;

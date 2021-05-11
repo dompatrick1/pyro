@@ -5,8 +5,10 @@ import Player from '../Player/Player'
 import {getAlbumsThunk} from "../../store/album"
 import {createLastPlayThunk, editLastPlayThunk, getLastPlayThunk} from "../../store/lastPlay"
 import {getPlaysThunk, createPlayThunk, editPlayThunk} from "../../store/play"
+import {getPlaylistsThunk, deletePlaylistThunk} from "../../store/playlist"
 import UsersList from "../UsersList"
 import User from "../User"
+import Playlist from "../Playlist/Playlist"
 import "./main.css"
 
 function Main() {
@@ -22,14 +24,14 @@ function Main() {
         dispatch(getAlbumsThunk())
         dispatch(getLastPlayThunk(sessionUser.id))
         dispatch(getPlaysThunk(sessionUser.id))
+        dispatch(getPlaylistsThunk(sessionUser.id))
     }, [dispatch, selectAlbumId])
 
-    // console.log("plays----", plays)
+
     function albumSelect(e, id) {
         e.preventDefault()
         setSelectAlbumId(id)
-        console.log("playssss", plays)
-        console.log("id----", id)
+
         const pay ={
             playCount: 1,
             userId: sessionUser.id,
@@ -96,6 +98,9 @@ function Main() {
         <div>
             <div>
                 <User />
+            </div>
+            <div>
+                <Playlist />
             </div>
             <div>
                 <UsersList />

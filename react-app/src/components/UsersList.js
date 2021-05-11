@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
+import {useDispatch, useSelector} from "react-redux"
+import Follow from "./follow/Follow"
 import { NavLink } from "react-router-dom";
+
+
 
 function UsersList() {
   const [users, setUsers] = useState([]);
+  const dispatch = useDispatch()
+
 
   useEffect(() => {
     async function fetchData() {
@@ -13,17 +19,9 @@ function UsersList() {
     fetchData();
   }, []);
 
-
-  function follow(e) {
-    e.preventDefault()
-  }
-
   const userComponents = users.map((user) => {
     return (
-      <li key={user.id}>
-        <p>{user.username}</p>
-        <button onClick={e => follow(e)}>Follow +</button>
-      </li>
+      <Follow user={user} />
     );
   });
 

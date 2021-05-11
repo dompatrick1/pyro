@@ -3,11 +3,26 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
-followings = db.Table('followings',
-    db.Column('id', db.Integer, primary_key=True),
-    db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
-    db.Column('followed_id', db.Integer, db.ForeignKey('users.id'))
-)
+# followings = db.Table('followings',
+#     db.Column('id', db.Integer, primary_key=True),
+#     db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
+#     db.Column('followed_id', db.Integer, db.ForeignKey('users.id'))
+# )
+
+class Following(db.Model):
+  __tablename__ = "followings"
+  id = db.Column(db.Integer, primary_key=True)
+  follower_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+  followed_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "follower_id": self.follower_id,
+      "followed_id": self.followed_id
+    }
+
+
 
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
@@ -21,9 +36,9 @@ class User(db.Model, UserMixin):
   plays = db.relationship('Play', backref='users')
   playlists = db.relationship('Playlist', backref='users')
   followed = db.relationship(
-        'User', secondary=followings,
-        primaryjoin=(followings.c.follower_id == id),
-        secondaryjoin=(followings.c.followed_id == id),
+        'User', secondary="followings",
+        primaryjoin=(Following.follower_id == id),
+        secondaryjoin=(Following.followed_id == id),
         backref=db.backref('followings', lazy='dynamic'), lazy='dynamic')
 
 
@@ -48,3 +63,4 @@ class User(db.Model, UserMixin):
       "username": self.username,
       "email": self.email
     }
+

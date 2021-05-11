@@ -10,9 +10,9 @@ class Playlist(db.Model):
     playlistAlbums = db.relationship('PlaylistAlbum', backref='playlists')
 
 
-def to_dict(self):
-    return {
-        "id": self.id,
-        "name": self.name,
-        "userId": self.userId
-    }
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "userId": self.userId
+        }
