@@ -15,6 +15,7 @@ function Player(props) {
     const audio = document.getElementById("audio")
     const audio1 = document.getElementById("audio1")
 
+    const newAlbum = props.selectAlbumId
     // if songIndex or props changes, play song and change play button to pause
     useEffect(() => {
         if (audio) {
@@ -25,10 +26,13 @@ function Player(props) {
 
     // if props changes, start at first song and make needle play
     useEffect(() => {
-        dispatch(getAlbumSongsThunk(props.selectAlbumId))
-        setSongIndex(0)
-        setNeedle(false)
-    }, [props])
+        const newAlbums = async () => {
+            await dispatch(getAlbumSongsThunk(props.selectAlbumId))
+            setSongIndex(0)
+            setNeedle(false)
+        }
+        newAlbums()
+    }, [newAlbum])
 
     if (audio1 && songIndex === 0 && needle === false) {
         audio1.play()

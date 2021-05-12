@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux"
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import Player from '../Player/Player'
 import {getAlbumsThunk} from "../../store/album"
 import {createLastPlayThunk, editLastPlayThunk, getLastPlayThunk} from "../../store/lastPlay"
 import {getPlaysThunk, createPlayThunk, editPlayThunk} from "../../store/play"
-import playlistReducer, {getPlaylistsThunk, deletePlaylistThunk} from "../../store/playlist"
+import {getPlaylistsThunk, deletePlaylistThunk} from "../../store/playlist"
 import crate from "./crate.png"
 import UsersList from "../UsersList"
 import User from "../User"
@@ -19,7 +19,7 @@ function Main() {
     const plays = Object.values(useSelector(state => state.plays))
     const albums = Object.values(useSelector(state => state.albums))
     const playlists = Object.values(useSelector(state => state.playlists))
-    const [selectAlbumId, setSelectAlbumId] = useState(0)
+    const [selectAlbumId, setSelectAlbumId] = useState()
     const [deleteClicked, setDeleteClicked] = useState(0)
 
     let inner;
@@ -28,9 +28,12 @@ function Main() {
         dispatch(getAlbumsThunk())
         dispatch(getLastPlayThunk(sessionUser.id))
         dispatch(getPlaysThunk(sessionUser.id))
-        dispatch(getPlaylistsThunk(sessionUser.id))
-    }, [dispatch, selectAlbumId])
 
+    }, [selectAlbumId])
+
+    useEffect(() => {
+        dispatch(getPlaylistsThunk(sessionUser.id))
+    }, [deleteClicked])
 
     function albumSelect(e, id) {
         e.preventDefault()
@@ -109,7 +112,7 @@ function Main() {
             </div>
         )
     }
-    const list = []
+
     return (
         <div className="mainContainer">
             {deleteClicked !== 0  ?
@@ -126,20 +129,15 @@ function Main() {
                 <Playlist />
             </div>
             <div>
-
                 {playlists.map(playlist => (
-
                         <div className="playlistContainer">
                             <button className="playlistButton">
                                 <img className="playlistCrateImage" src={crate} alt={crate}></img>
                                 <h3>{playlist.name}</h3>
                             </button>
                             <button className="deletePlaylist" onClick={e => setDelete(e, playlist.id)}>Delete</button>
-
                         </div>
-
                 ))}
-                <ul>{list}</ul>
             </div>
             <div>
                 <UsersList />
