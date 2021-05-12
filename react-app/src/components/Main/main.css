@@ -1,3 +1,18 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.mainContainer {
+    /* display: grid; */
+}
+
+.userNameLogout {
+    margin-top: 0px
+}
 .albumImage {
     width: 100px;
     height: 100px;
@@ -6,4 +21,66 @@
 .playingAlbumImage {
     width: 200px;
     height: 200px;
+}
+
+.playlistCrateImage {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+.playlistContainer {
+    display: flex;
+    align-items: center;
+}
+
+.playlistContainer:hover {
+    background-color: rgba(0, 0, 0, 0.18);
+    border-radius: 10px;
+}
+
+.playlistButton {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    color: white
+}
+
+.deletePlaylist {
+    width: 38px;
+    font-size: 8px;
+    background-color: rgba(0, 0, 0, 0.18);
+    border: none;
+    border-radius: 5px;
+    color: rgb(153, 153, 153);
+    margin-left: 40px;
+}
+
+.deletePlaylistConfirmationContainer {
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    position:fixed;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(199, 199, 199);
+    font-size: 20px;
+}
+
+.deletePlaylistConfirmationContainer button {
+    width: 80px;
+    height: 25px;
+    margin: 5px;
+    background-color: rgb(206, 207, 207);
+
+}
+
+.deletePlaylistConfirmationContainer button:hover {
+    transform: scale(1.05);
 }

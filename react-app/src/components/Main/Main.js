@@ -5,7 +5,8 @@ import Player from '../Player/Player'
 import {getAlbumsThunk} from "../../store/album"
 import {createLastPlayThunk, editLastPlayThunk, getLastPlayThunk} from "../../store/lastPlay"
 import {getPlaysThunk, createPlayThunk, editPlayThunk} from "../../store/play"
-import {getPlaylistsThunk, deletePlaylistThunk} from "../../store/playlist"
+import playlistReducer, {getPlaylistsThunk, deletePlaylistThunk} from "../../store/playlist"
+import crate from "./crate.png"
 import UsersList from "../UsersList"
 import User from "../User"
 import Playlist from "../Playlist/Playlist"
@@ -17,8 +18,11 @@ function Main() {
     const lastPlayed = useSelector(state => state.lastPlays.lastPlay)
     const plays = Object.values(useSelector(state => state.plays))
     const albums = Object.values(useSelector(state => state.albums))
+    const playlists = Object.values(useSelector(state => state.playlists))
     const [selectAlbumId, setSelectAlbumId] = useState(0)
+    const [deleteClicked, setDeleteClicked] = useState(0)
 
+    let inner;
 
     useEffect(() => {
         dispatch(getAlbumsThunk())
@@ -72,7 +76,19 @@ function Main() {
         }
     }
 
-    let inner;
+
+    const setDelete = (e, id) => {
+        e.preventDefault()
+        setDeleteClicked(id)
+    }
+
+    const deletePlaylist = async (e, id) => {
+        e.preventDefault()
+        setDeleteClicked(0)
+        await dispatch(deletePlaylistThunk(id))
+        dispatch(getPlaylistsThunk(sessionUser.id))
+    }
+
 
     if (selectAlbumId > 0) {
         inner = (
@@ -93,14 +109,37 @@ function Main() {
             </div>
         )
     }
-
+    const list = []
     return (
-        <div>
-            <div>
+        <div className="mainContainer">
+            {deleteClicked !== 0  ?
+                <div className="deletePlaylistConfirmationContainer">
+                    <p>{`Are you sure you want to delete "${playlists.find(playlist => playlist.id === deleteClicked).name}" playlist?`}</p>
+                    <button onClick={e => deletePlaylist(e, deleteClicked)}>Yes</button>
+                    <button onClick={() => setDeleteClicked(0)}>No</button>
+                </div>
+            : null}
+            <div className="userNameLogout">
                 <User />
             </div>
             <div>
                 <Playlist />
+            </div>
+            <div>
+
+                {playlists.map(playlist => (
+
+                        <div className="playlistContainer">
+                            <button className="playlistButton">
+                                <img className="playlistCrateImage" src={crate} alt={crate}></img>
+                                <h3>{playlist.name}</h3>
+                            </button>
+                            <button className="deletePlaylist" onClick={e => setDelete(e, playlist.id)}>Delete</button>
+
+                        </div>
+
+                ))}
+                <ul>{list}</ul>
             </div>
             <div>
                 <UsersList />
