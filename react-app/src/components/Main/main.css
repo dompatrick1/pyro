@@ -76,11 +76,11 @@ body {
 .deletePlaylistConfirmationContainer button {
     width: 100px;
     height: 30px;
-    margin: 8px;
-    background-color: rgb(206, 207, 207);
-
+    margin-bottom: 8px;
+    background-color: rgb(192, 192, 192);
 }
 
 .deletePlaylistConfirmationContainer button:hover {
     transform: scale(1.03);
+    background-color: rgb(206, 207, 207);
 }

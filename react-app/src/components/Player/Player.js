@@ -22,22 +22,25 @@ function Player(props) {
             setPlaying(false)
             audio.play()
         }
-    }, [songIndex, props, dispatch])
+    }, [songIndex])
 
-    // if props changes, start at first song and make needle play
+    // if albumId changes, start at first song and make needle play
     useEffect(() => {
         const newAlbums = async () => {
-            await dispatch(getAlbumSongsThunk(props.selectAlbumId))
-            setSongIndex(0)
-            setNeedle(false)
+                await dispatch(getAlbumSongsThunk(props.selectAlbumId))
+                setSongIndex(0)
+                setNeedle(false)
+                setPlaying(false)
+                if (audio) audio.play()
         }
         newAlbums()
-    }, [newAlbum])
+    }, [props])
 
     if (audio1 && songIndex === 0 && needle === false) {
         audio1.play()
         setNeedle(true)
     }
+
 
     // If song ends, go to next song
     if (audio) {

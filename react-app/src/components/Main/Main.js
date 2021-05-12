@@ -10,6 +10,7 @@ import crate from "./crate.png"
 import UsersList from "../UsersList"
 import User from "../User"
 import Playlist from "../Playlist/Playlist"
+import DeletePlaylist from "../Playlist/DeletePlaylist"
 import "./main.css"
 
 function Main() {
@@ -20,20 +21,18 @@ function Main() {
     const albums = Object.values(useSelector(state => state.albums))
     const playlists = Object.values(useSelector(state => state.playlists))
     const [selectAlbumId, setSelectAlbumId] = useState()
-    const [deleteClicked, setDeleteClicked] = useState(0)
-
+    const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
     let inner;
 
     useEffect(() => {
         dispatch(getAlbumsThunk())
         dispatch(getLastPlayThunk(sessionUser.id))
         dispatch(getPlaysThunk(sessionUser.id))
-
     }, [selectAlbumId])
 
     useEffect(() => {
         dispatch(getPlaylistsThunk(sessionUser.id))
-    }, [deleteClicked])
+    }, [])
 
     function albumSelect(e, id) {
         e.preventDefault()
@@ -79,26 +78,12 @@ function Main() {
         }
     }
 
-
-    const setDelete = (e, id) => {
-        e.preventDefault()
-        setDeleteClicked(id)
-    }
-
-    const deletePlaylist = async (e, id) => {
-        e.preventDefault()
-        setDeleteClicked(0)
-        await dispatch(deletePlaylistThunk(id))
-        dispatch(getPlaylistsThunk(sessionUser.id))
-    }
-
-
     if (selectAlbumId > 0) {
         inner = (
             <>
                 {albums[selectAlbumId - 1] ?
                     <div>
-                        <img className="playingAlbumImage" src={albums[selectAlbumId - 1].image} alt={albums[selectAlbumId - 1].image}></img>
+                        <img className="playingAlbumImage" src={`${IMAGE_FOLDER}${albums[selectAlbumId - 1].image}`} alt={albums[selectAlbumId - 1].image}></img>
                         <h2>{albums[selectAlbumId - 1].title}</h2>
                         <h3>{albums[selectAlbumId - 1].artist}</h3>
                     </div>
@@ -115,13 +100,6 @@ function Main() {
 
     return (
         <div className="mainContainer">
-            {deleteClicked !== 0  ?
-                <div className="deletePlaylistConfirmationContainer">
-                    <p>{`Are you sure you want to delete "${playlists.find(playlist => playlist.id === deleteClicked).name}" playlist?`}</p>
-                    <button onClick={e => deletePlaylist(e, deleteClicked)}>Yes</button>
-                    <button onClick={() => setDeleteClicked(0)}>No</button>
-                </div>
-            : null}
             <div className="userNameLogout">
                 <User />
             </div>
@@ -135,7 +113,7 @@ function Main() {
                                 <img className="playlistCrateImage" src={crate} alt={crate}></img>
                                 <h3>{playlist.name}</h3>
                             </button>
-                            <button className="deletePlaylist" onClick={e => setDelete(e, playlist.id)}>Delete</button>
+                            <DeletePlaylist playlist={playlist} playlists={playlists}/>
                         </div>
                 ))}
             </div>
@@ -145,7 +123,7 @@ function Main() {
             {albums.map(album => {
                 return (
                     <button  onClick={e => albumSelect(e, album.id)}>
-                        <img className="albumImage" src={album.image} alt={album.image}></img>
+                        <img className="albumImage" src={`${IMAGE_FOLDER}${album.image}`} alt={`${IMAGE_FOLDER}${album.image}`}></img>
                     </button>
                 )
             })}
