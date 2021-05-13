@@ -7,6 +7,8 @@ import lastPlayReducer from "./lastPlay"
 import playsReducer from "./play"
 import followReducer from "./following";
 import playlistReducer from "./playlist";
+import playerReducer from "./player";
+
 
 
 const rootReducer = combineReducers({
@@ -17,6 +19,7 @@ const rootReducer = combineReducers({
     plays: playsReducer,
     follows: followReducer,
     playlists: playlistReducer,
+    player: playerReducer
 });
 
 let enhancer;

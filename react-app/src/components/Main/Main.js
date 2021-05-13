@@ -11,16 +11,17 @@ import UsersList from "../UsersList"
 import User from "../User"
 import Playlist from "../Playlist/Playlist"
 import DeletePlaylist from "../Playlist/DeletePlaylist"
+import {getPlayerAlbum} from "../../store/player"
 import "./main.css"
 
 function Main() {
     const dispatch = useDispatch()
+    const selectAlbumId = useSelector(state => state.player.albumId)
     const sessionUser = useSelector(state => state.session.user)
     const lastPlayed = useSelector(state => state.lastPlays.lastPlay)
     const plays = Object.values(useSelector(state => state.plays))
     const albums = Object.values(useSelector(state => state.albums))
     const playlists = Object.values(useSelector(state => state.playlists))
-    const [selectAlbumId, setSelectAlbumId] = useState()
     const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
     let inner;
 
@@ -28,7 +29,7 @@ function Main() {
         dispatch(getAlbumsThunk())
         dispatch(getLastPlayThunk(sessionUser.id))
         dispatch(getPlaysThunk(sessionUser.id))
-    }, [selectAlbumId])
+    }, [])
 
     useEffect(() => {
         dispatch(getPlaylistsThunk(sessionUser.id))
@@ -36,8 +37,7 @@ function Main() {
 
     function albumSelect(e, id) {
         e.preventDefault()
-        setSelectAlbumId(id)
-
+        dispatch(getPlayerAlbum(id))
         const pay ={
             playCount: 1,
             userId: sessionUser.id,
@@ -129,9 +129,6 @@ function Main() {
             })}
             <div>
                 {inner}
-            </div>
-            <div>
-                <Player selectAlbumId={selectAlbumId} songIndex={0}/>
             </div>
         </div>
     )

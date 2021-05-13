@@ -10,6 +10,7 @@ import Main from "./components/Main/Main";
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 import Home from "./components/home/home"
+import Player from "./components/Player/Player"
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -32,6 +33,9 @@ function App() {
       <Switch>
         <ProtectedRoute path="/users/:userId" exact={true} >
           <Main />
+          <div>
+            <Player />
+          </div>
         </ProtectedRoute>
         <Route path="/" exact={true}>
           <Home />

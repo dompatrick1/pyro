@@ -4,9 +4,11 @@ import {useDispatch, useSelector} from "react-redux"
 import {getAlbumSongsThunk} from "../../store/song"
 import "./player.css"
 
-function Player(props) {
+function Player() {
     const dispatch = useDispatch()
     let songs = Object.values(useSelector(state => state.songs))
+    const selectAlbumId = useSelector(state => state.player.albumId)
+    // const [albumId, setAlbumId] = useState(props.selectAlbumId)
 
     const [songIndex, setSongIndex] = useState(0)
     const [playing, setPlaying] = useState(true)
@@ -15,7 +17,21 @@ function Player(props) {
     const audio = document.getElementById("audio")
     const audio1 = document.getElementById("audio1")
 
-    const newAlbum = props.selectAlbumId
+    // if albumId changes, start at first song and make needle play
+    useEffect(() => {
+        const newAlbums = async () => {
+            if (selectAlbumId) {
+                await dispatch(getAlbumSongsThunk(selectAlbumId))
+                setSongIndex(0)
+                setNeedle(false)
+                setPlaying(false)
+                if (audio) audio.play()
+            }
+        }
+        newAlbums()
+    }, [selectAlbumId, audio])
+
+
     // if songIndex or props changes, play song and change play button to pause
     useEffect(() => {
         if (audio) {
@@ -24,17 +40,6 @@ function Player(props) {
         }
     }, [songIndex])
 
-    // if albumId changes, start at first song and make needle play
-    useEffect(() => {
-        const newAlbums = async () => {
-                await dispatch(getAlbumSongsThunk(props.selectAlbumId))
-                setSongIndex(0)
-                setNeedle(false)
-                setPlaying(false)
-                if (audio) audio.play()
-        }
-        newAlbums()
-    }, [props])
 
     if (audio1 && songIndex === 0 && needle === false) {
         audio1.play()

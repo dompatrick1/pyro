@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {createPlaylistThunk} from "../../store/playlist"
+import {createPlaylistThunk, getPlaylistThunk} from "../../store/playlist"
 
 function Playlist() {
     const dispatch = useDispatch()
@@ -15,6 +15,7 @@ function Playlist() {
             userId: sessionUser.id
         }
         dispatch(createPlaylistThunk(payload))
+        // dispatch(getPlaylistsThunk(sessionUser.id))
         setPlaylistName('')
     }
 
