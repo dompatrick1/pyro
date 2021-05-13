@@ -16,7 +16,7 @@ const getOneAlbum = (album) => ({
 //thunks
 
 export const getAlbumsThunk = () => async (dispatch) => {
-    const response = await fetch('/api/albums')
+    const response = await fetch('/api/albums/')
     if (!response.ok) {
       throw response
     }
