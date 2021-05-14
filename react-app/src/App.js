@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -16,6 +16,7 @@ function App() {
   // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch()
   const [loaded, setLoaded] = useState(false);
+  const selectAlbumId = useSelector(state => state.player.albumId)
 
   useEffect(() => {
     (async() => {
@@ -32,7 +33,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <ProtectedRoute path="/users/:userId" exact={true} >
-          <Main />
+          <Main selectAlbumId={selectAlbumId}/>
           <div>
             <Player />
           </div>

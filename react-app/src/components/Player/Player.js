@@ -8,7 +8,6 @@ function Player() {
     const dispatch = useDispatch()
     let songs = Object.values(useSelector(state => state.songs))
     const selectAlbumId = useSelector(state => state.player.albumId)
-    // const [albumId, setAlbumId] = useState(props.selectAlbumId)
 
     const [songIndex, setSongIndex] = useState(0)
     const [playing, setPlaying] = useState(true)
