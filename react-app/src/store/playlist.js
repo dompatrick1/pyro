@@ -26,7 +26,6 @@ export const getPlaylistsThunk = (id) => async (dispatch) => {
       }
 
     const playlists = await response.json()
-    console.log("------$$$$$", response)
     dispatch(getPlaylists(playlists))
 }
 

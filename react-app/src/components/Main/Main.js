@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux"
-// import { useParams } from "react-router-dom";
-import Player from '../Player/Player'
 import {getAlbumsThunk} from "../../store/album"
 import {createLastPlayThunk, editLastPlayThunk, getLastPlayThunk} from "../../store/lastPlay"
 import {getPlaysThunk, createPlayThunk, editPlayThunk} from "../../store/play"
-import {getPlaylistsThunk, deletePlaylistThunk} from "../../store/playlist"
+import {getPlaylistsThunk} from "../../store/playlist"
+import {createPlaylistAlbumThunk} from "../../store/playlistAlbum"
 import crate from "./crate.png"
 import UsersList from "../UsersList"
 import User from "../User"
@@ -34,8 +33,8 @@ function Main() {
     useEffect(() => {
         dispatch(getPlaylistsThunk(sessionUser.id))
     }, [])
-
-    function albumSelect(e, id) {
+// Album Select Actions ----------------------------------------------------------
+    const albumSelect = async (e, id) => {
         e.preventDefault()
         dispatch(getPlayerAlbum(id))
         const pay ={
@@ -55,11 +54,12 @@ function Main() {
                     userId: sessionUser.id,
                     albumId: id
                 }
-                return dispatch(editPlayThunk(editPayload))
+                dispatch(editPlayThunk(editPayload))
+                break
             } else if (i === plays.length - 1 && play.albumId !== id) {
                 dispatch(createPlayThunk(pay))
-            } else continue
-
+                break
+            }
         }
 
         if (!lastPlayed) {
@@ -68,14 +68,26 @@ function Main() {
                 albumId: id
             }
             dispatch(createLastPlayThunk(payload))
-        } else {
+        } else if (lastPlayed){
             const payload = {
                 id: lastPlayed.id,
                 userId: sessionUser.id,
                 albumId: id
             }
-            dispatch(editLastPlayThunk(payload))
+            await dispatch(editLastPlayThunk(payload))
+            dispatch(getLastPlayThunk(sessionUser.id))
         }
+    }
+// -----------------------------------------------------------------------------------
+
+    function addToPlaylist(e, playlistId, albumId) {
+        e.preventDefault()
+
+        const payload = {
+            albumId,
+            playlistId
+        }
+        dispatch(createPlaylistAlbumThunk(payload))
     }
 
     if (selectAlbumId > 0) {
@@ -122,9 +134,21 @@ function Main() {
             </div>
             {albums.map(album => {
                 return (
-                    <button  onClick={e => albumSelect(e, album.id)}>
-                        <img className="albumImage" src={`${IMAGE_FOLDER}${album.image}`} alt={`${IMAGE_FOLDER}${album.image}`}></img>
-                    </button>
+                    <div>
+                        <button  onClick={e => albumSelect(e, album.id)}>
+                            <img className="albumImage" src={`${IMAGE_FOLDER}${album.image}`} alt={`${IMAGE_FOLDER}${album.image}`}></img>
+                        </button>
+                        {playlists.length > 0 ?
+                            <form>
+                                <select  onChange={e => addToPlaylist(e, e.target.value, album.id)}>
+                                    <option value="" disabled selected hidden>Add To Playlist</option>
+                                    {playlists.map(playlist => (
+                                        <option value={playlist.id}>{playlist.name}</option>
+                                    ))}
+                                </select>
+                            </form>
+                        : null}
+                    </div>
                 )
             })}
             <div>

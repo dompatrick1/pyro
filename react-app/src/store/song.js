@@ -16,7 +16,7 @@ const getAlbumSongs = (songs) => ({
 //thunks
 
 export const getSongsThunk = () => async (dispatch) => {
-    const response = await fetch('/api/songs')
+    const response = await fetch('/api/songs/')
     if (!response.ok) {
         throw response
       }

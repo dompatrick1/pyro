@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux"
 import {getPlaylistsThunk, deletePlaylistThunk} from "../../store/playlist"
+import {deletePlaylistAlbumsThunk} from "../../store/playlistAlbum"
 import '../Main/main.css'
 
 function DeletePlaylist(props) {
@@ -16,7 +17,8 @@ function DeletePlaylist(props) {
     const deletePlaylist = async (e, id) => {
         e.preventDefault()
         setDeleteClicked(0)
-        await dispatch(deletePlaylistThunk(id))
+        await dispatch(deletePlaylistAlbumsThunk(id))
+        dispatch(deletePlaylistThunk(id))
         dispatch(getPlaylistsThunk(sessionUser.id))
     }
 

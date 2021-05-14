@@ -14,6 +14,7 @@ from .api.lastPlay_routes import lastPlay_routes
 from .api.play_routes import play_routes
 from .api.following_routes import following_routes
 from .api.playlist_routes import playlist_routes
+from .api.playlistAlbums_routes import playlistAlbum_routes
 
 from .seeds import seed_commands
 
@@ -43,6 +44,7 @@ app.register_blueprint(lastPlay_routes, url_prefix='/api/lastPlays')
 app.register_blueprint(play_routes, url_prefix='/api/plays')
 app.register_blueprint(following_routes, url_prefix='/api/following')
 app.register_blueprint(playlist_routes, url_prefix='/api/playlists')
+app.register_blueprint(playlistAlbum_routes, url_prefix='/api/playlistAlbums')
 db.init_app(app)
 Migrate(app, db)
 

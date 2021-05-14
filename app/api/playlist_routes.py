@@ -6,7 +6,6 @@ playlist_routes = Blueprint("playlists", __name__)
 @playlist_routes.route('/user/<int:id>')
 def get_playlists(id):
     playlists = Playlist.query.filter(Playlist.userId == id).all()
-    print(playlists)
     return {"playlists": [playlist.to_dict() for playlist in playlists]}
 
 @playlist_routes.route('/user/<userId>/playlist/<name>', methods=["POST"])
