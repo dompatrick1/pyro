@@ -29,6 +29,7 @@ function Main(props) {
     const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
     const [searchOn, setSearchOn] = useState(false)
     const [playlistAlbumsDisplay, setPlaylistAlbumsDisplay] = useState(false)
+    const [playlistName, setPlaylistName] = useState('')
     let inner;
 
     useEffect(() => {
@@ -43,15 +44,15 @@ function Main(props) {
     if (selectAlbumId > 0) {
 
         inner = (
-            <>
+            <div className="currentPlayingAlbum">
                 {albums[selectAlbumId - 1] ?
-                    <div>
+                    <div >
                         <img className="playingAlbumImage" src={`${IMAGE_FOLDER}${albums[selectAlbumId - 1].image}`} alt={albums[selectAlbumId - 1].image}></img>
                         <h2>{albums[selectAlbumId - 1].title}</h2>
                         <h3>{albums[selectAlbumId - 1].artist}</h3>
                     </div>
                 : null}
-            </>
+            </div>
         )
     } else {
         inner = (<p>Click an album</p>)
@@ -68,11 +69,12 @@ function Main(props) {
         })
     }
 
-    console.log("^^^^^^^^", playlistAlbumsList)
 
     const albumSelect = async (e, id) => {
         e.preventDefault()
         dispatch(getPlayerAlbum(id))
+        setSearchOn(false)
+        setPlaylistAlbumsDisplay(false)
 
         const pay ={
             playCount: 1,
@@ -129,6 +131,7 @@ function Main(props) {
     function displaySearch(e) {
         e.preventDefault()
         setSearchOn(true)
+        setPlaylistAlbumsDisplay(false)
 
     }
 
@@ -137,9 +140,12 @@ function Main(props) {
         setSearchOn(false)
     }
 
-    function displayPlaylistAlbums(e, playlistId) {
+    function displayPlaylistAlbums(e, playlistId, name) {
+        setPlaylistName(name)
         dispatch(getPlaylistAlbumsThunk(playlistId))
         setPlaylistAlbumsDisplay(true)
+        setSearchOn(false)
+
     }
 
     const deletePlaylistAlbum = async (e, id) => {
@@ -160,46 +166,56 @@ function Main(props) {
         <div className="mainContainer">
             <div className="userNameLogout">
                 <User />
+                <button onClick={(e) => displaySearch(e)}>Search albums and artists</button>
             </div>
-            <div>
-                <Playlist />
+            <div className="mainPlayListContainer">
+                <div className="mainPlaylistForm">
+                    <Playlist />
+                </div>
+                <div className="mainPlaylistsDisplay">
+                    {playlists.map(playlist => (
+                            <div className="playlistContainer">
+                                <button className="playlistButton" onClick={e => displayPlaylistAlbums(e, playlist.id, playlist.name)}>
+                                    <img className="playlistCrateImage" src={crate} alt={crate}></img>
+                                    <h3>{playlist.name}</h3>
+                                </button>
+                                <DeletePlaylist playlist={playlist} playlists={playlists}/>
+                            </div>
+                    ))}
+                </div>
             </div>
-            <div>
-                {playlists.map(playlist => (
-                        <div className="playlistContainer">
-                            <button className="playlistButton" onClick={e => displayPlaylistAlbums(e, playlist.id)}>
-                                <img className="playlistCrateImage" src={crate} alt={crate}></img>
-                                <h3>{playlist.name}</h3>
-                            </button>
-                            <DeletePlaylist playlist={playlist} playlists={playlists}/>
-                        </div>
-                ))}
-            </div>
-            <div>
+            <div className="mainUsersList">
                 <UsersList />
             </div>
-                <button onClick={(e) => displaySearch(e)}>Search albums and artists</button>
-
-            <div>
+            <div className="mainInner">
                 {searchOn === true ?
                 <div>
                     <button onClick={e => exitSearch(e)}>exit search</button>
                     <SearchAlbums selectAlbumId={selectAlbumId} />
                 </div>
                 : playlistAlbumsDisplay === true && playlistAlbums.length > 0 ?
-                    playlistAlbumsList.map(album => {
+                    <div className="playlistAlbumsContainer">
+                    <h1>{playlistName}</h1>
+                    {playlistAlbumsList.map(album => {
                         return (
                             <div>
-                                <button  onClick={e => albumSelect(e, album.id)}>
+                                <button className="playlistAlbumButton" onClick={e => albumSelect(e, album.id)}>
                                     <img className="albumImage" src={`${IMAGE_FOLDER}${album.image}`} alt={`${IMAGE_FOLDER}${album.image}`}></img>
+                                    <text>{album.title}</text>
+                                    <text>{`by ${album.artist}`}</text>
                                 </button>
-                                <button onClick={e => deletePlaylistAlbum(e, album.id)}>Remove From Playlist</button>
+                                <button className="removeFromPlaylist" onClick={e => deletePlaylistAlbum(e, album.id)}>Remove</button>
+
                             </div>
                         )
-                    })
+                    })}
+                    </div>
                 : inner}
 
 
+            </div>
+            <div className="mainTopAlbums">
+                <p>My Top Albums:</p>
             </div>
         </div>
     )

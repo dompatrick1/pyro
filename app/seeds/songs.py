@@ -86,6 +86,118 @@ def seed_songs():
             songTitle="Silver Springs",
             song="https://pyro-songs.s3.us-east-2.amazonaws.com/Silver-Springs.mp3", albumId=2
         ),
+        Song(
+            songTitle="Gimme Shelter",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Gimme-Shelter.mp3", albumId=3
+        ),
+        Song(
+            songTitle="Love In Vain",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Love-In-Vain.mp3", albumId=3
+        ),
+        Song(
+            songTitle="Country Honk",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Country-Honk.mp3", albumId=3
+        ),
+        Song(
+            songTitle="Live With Me",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Live-With-Me.mp3", albumId=3
+        ),
+        Song(
+            songTitle="Let It Bleed",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Let-It-Bleed.mp3", albumId=3
+        ),
+        Song(
+            songTitle="Midnight Rambler",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Midnight-Rambler.mp3", albumId=3
+        ),
+        Song(
+            songTitle="You Got The Silver",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/You-Got-The-Silver.mp3", albumId=3
+        ),
+        Song(
+            songTitle="Monkey Man",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Monkey-Man.mp3", albumId=3
+        ),
+        Song(
+            songTitle="You Can't Always Get What You Want",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/You-Cant-Always-Get-What-You-Want.mp3", albumId=3
+        ),
+        Song(
+            songTitle="Sweet Baby James",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Sweet-Baby-James.mp3", albumId=4
+        ),
+        Song(
+            songTitle="Lo and Behold",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Lo-and-Behold.mp3", albumId=4
+        ),
+        Song(
+            songTitle="Sunny Skies",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Sunny-Skies.mp3", albumId=4
+        ),
+        Song(
+            songTitle="Steamroller",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Steamroller.mp3", albumId=4
+        ),
+        Song(
+            songTitle="Country Road",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Country-Road.mp3", albumId=4
+        ),
+        Song(
+            songTitle="Oh Susannah",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Oh-Susannah.mp3", albumId=4
+        ),
+        Song(
+            songTitle="Fire & Rain",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Fire-and-Rain.mp3", albumId=4
+        ),
+        Song(
+            songTitle="Blossom",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Blossom.mp3", albumId=4
+        ),
+        Song(
+            songTitle="Anywhere Like Heaven",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Anywhere-like-Heaven.mp3", albumId=4
+        ),
+        Song(
+            songTitle="Oh Baby, Don't You Loose Your Lip On Me",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Oh-Baby-Dont-You-Loose-Your-Lip-on-Me.mp3", albumId=4
+        ),
+        Song(
+            songTitle="Suite for 20 G",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Suite-for-20-G.mp3", albumId=4
+        ),
+        Song(
+            songTitle="Hotel California",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Hotel-California.mp3", albumId=5
+        ),
+        Song(
+            songTitle="New Kid In Town",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/New-Kid-in-Town.mp3", albumId=5
+        ),
+        Song(
+            songTitle="Life in the Fast Lane",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Life-in-the-Fast-Lane.mp3", albumId=5
+        ),
+        Song(
+            songTitle="Wasted Time",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Wasted-Time.mp3", albumId=5
+        ),
+        Song(
+            songTitle="Victim of Love",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Victim-of-Love.mp3", albumId=5
+        ),
+        Song(
+            songTitle="Pretty Maids All In A Row",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Pretty-Maids-All-in-a-Row.mp3", albumId=5
+        ),
+        Song(
+            songTitle="Try and Love Again",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Try-and-Love-Again.mp3", albumId=5
+        ),
+        Song(
+            songTitle="The Last Resort",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/The-Last-Resort.mp3", albumId=5
+        ),
     ]
 
     db.session.add_all(songs)

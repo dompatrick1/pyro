@@ -11,6 +11,8 @@ import Main from "./components/Main/Main";
 import { authenticate } from "./store/session";
 import Home from "./components/home/home"
 import Player from "./components/Player/Player"
+import "./components/Main/main.css"
+import 'font-awesome/css/font-awesome.min.css';
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -34,7 +36,7 @@ function App() {
       <Switch>
         <ProtectedRoute path="/users/:userId" exact={true} >
           <Main selectAlbumId={selectAlbumId}/>
-          <div>
+          <div className="mainPlayer">
             <Player />
           </div>
         </ProtectedRoute>

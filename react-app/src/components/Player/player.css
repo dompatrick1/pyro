@@ -1,33 +1,75 @@
 audio {
     width: 600px;
-    background-color: rgb(33, 42, 85);
+    /* background-color: rgb(33, 42, 85); */
 }
 
 audio::-webkit-media-controls-panel {
-    background-color: rgb(33, 42, 85);
-    border-color: teal;
+    background-color: rgb(40, 51, 102);
+
+
 }
 
 audio::-webkit-media-controls-time-remaining-display {
     font-size: 16px;
-    color: white;
+    color: rgb(226, 226, 226);
+    background-color: none;
+}
+
+audio::-webkit-media-controls-time-elapsed {
+    font-size: 100px
 }
 
 audio::-webkit-media-controls-timeline-container {
     width: 200px;
-    background-color: thistle;
-    /* color: white; */
 }
 
-audio::-webkit-media-controls-volume-slider-container {
-    display: none;
-}
 
 audio::-webkit-media-controls-volume-slider {
     width: 120px;
-    visibility:unset;
 }
 
 audio::-webkit-media-controls-play-button {
     display: none;
+}
+
+audio::-webkit-media-controls-enclosure {
+    background-color: rgb(33, 42, 85);
+}
+
+.playingSongName {
+    margin: 0px;
+}
+
+.playContainer {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.playPause {
+    border: none;
+    padding: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 40px;
+    background: none;
+}
+
+.forwardBackward {
+    border: none;
+    padding: 0px;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 28px;
+    background: none;
+}
+
+.playControls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

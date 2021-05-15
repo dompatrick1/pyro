@@ -83,28 +83,35 @@ function Player() {
 
 
     return (
-        <div>
-            <button onClick={e => prevSong(e)}>Previous</button>
-            {playing === true ?
-                <button onClick={e => playSongs(e)}>Play</button>
-            : <button onClick={e => playSongs(e)}>Pause</button>}
-            <button onClick={e => nextSong(e)}>Next</button>
-            {songs[songIndex] ?
-                <h1>{songs[songIndex].songTitle}</h1>
-            : null}
-                {songs.length ?
-                <div>
-                <audio id="audio1" src="/Needle.mp3"></audio>
-
-                <audio
-                    id="audio"
-                    controls
-                    src={songs[songIndex].song}>
-                    Your browser does not support the
-                    <code>audio</code> element.
-                </audio>
+        <div className="playContainer">
+            {songs.length ?
+            <div>
+                <div className="playControls">
+                    <button className="forwardBackward" onClick={e => prevSong(e)}><i class="fa fa-backward"></i></button>
+                    {playing === true ?
+                        <button className="playPause" onClick={e => playSongs(e)}><i class="fa fa-play-circle-o"></i></button>
+                    : <button className="playPause" onClick={e => playSongs(e)}><i class="fa fa-pause-circle"></i></button>}
+                    <button className="forwardBackward" onClick={e => nextSong(e)}><i class="fa fa-forward"></i></button>
                 </div>
-                : null}
+                    {songs[songIndex] ?
+                        <h4 className="playingSongName">{songs[songIndex].songTitle}</h4>
+                    : null}
+            </div>
+            :null}
+                {songs.length ?
+                <div className="audioContainer">
+                    <audio id="audio1" src="/Needle.mp3"></audio>
+
+                    <audio
+                        id="audio"
+                        controls
+                        controlsList="nodownload"
+                        src={songs[songIndex].song}>
+                        Your browser does not support the
+                        <code>audio</code> element.
+                    </audio>
+                </div>
+                : <audio controls id="audio"></audio>}
         </div>
     )
 }

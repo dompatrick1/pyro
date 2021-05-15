@@ -4,24 +4,92 @@ body, html {
     margin-left: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
-    /* overflow: hidden; */
+}
+
+.mainInner::-webkit-scrollbar, .mainPlayListContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .mainContainer {
-    /* display: grid; */
+    display: grid;
+    /* margin-left: 20px;
+    margin-right: 20px; */
+    grid-template-columns: 1fr 2.6fr 1fr;
+    grid-template-rows: 1fr, 2fr, 1fr;
+    grid-template-areas:
+        "user topAlbums friends"
+        "playlists inner friends"
+        "player player player";
+    /* height: 100vh; */
 }
 
 .userNameLogout {
-    margin-top: 0px
+    grid-area: user;
+    margin-top: 0px;
+    min-height: 20vh;
 }
+
+.mainPlayListContainer {
+    grid-area: playlists;
+    min-height: 58vh;
+    max-height: 58vh;
+    max-width: 100%;
+    min-width: 250px;
+    /* padding-left: 20px; */
+    overflow:auto;
+    overflow-wrap: break-word;
+
+    /* overflow-y: scroll; */
+}
+
+.mainPlaylistForm {
+    margin-bottom: 20px;
+}
+
+.mainUsersList {
+    grid-area: friends;
+    max-width: 250px;
+    min-width: 200px;
+}
+
+.mainPlayer {
+    grid-area: player;
+    max-height: 22vh;
+    min-height: 22vh;
+    overflow:hidden;
+    background-color: rgb(40, 51, 102);
+}
+
+.mainInner {
+    grid-area: inner;
+    background-image: url("./turntable.jpg");
+    display: flex;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-height: 58vh;
+    overflow-y: scroll;
+}
+
+.scrollable-element {
+    scrollbar-color: red yellow;
+  }
+
+.mainTopAlbums {
+    grid-area: topAlbums;
+    background-color: rgb(40, 51, 102);
+}
+
 .albumImage {
-    width: 100px;
-    height: 100px;
+    width: 125px;
+    height: 125px;
 }
 
 .playingAlbumImage {
-    width: 200px;
-    height: 200px;
+    display: flex;
+    width: 250px;
+    height: 250px;
+    border: 5px solid black;
 }
 
 .playlistCrateImage {
@@ -33,6 +101,8 @@ body, html {
 .playlistContainer {
     display: flex;
     align-items: center;
+    padding-right: 5px;
+    /* width: 100%; */
 }
 
 .playlistContainer:hover {
@@ -40,12 +110,14 @@ body, html {
     border-radius: 10px;
 }
 
+
 .playlistButton {
     background-color: transparent;
     border: none;
     display: flex;
     align-items: center;
-    color: white
+    color: white;
+    margin-left: 20px
 }
 
 .deletePlaylist {
@@ -84,4 +156,92 @@ body, html {
 .deletePlaylistConfirmationContainer button:hover {
     transform: scale(1.03);
     background-color: rgb(206, 207, 207);
+}
+
+.playContainer h4 {
+    font-size: 20px;
+    font-weight: lighter;
+    letter-spacing: .5px;
+    /* display: flex;
+    left: 0 */
+}
+
+.playlistAlbumButton {
+    background-color: black;
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(219, 219, 219);
+    font-size: 10px;
+    padding: 5px ;
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+.playlistAlbumButton:hover {
+    background-color: rgb(19, 19, 19);
+    transform: scale(1.01);
+}
+
+.playlistAlbumButton text {
+    margin-top: 2px;
+    margin-bottom: 1px;
+}
+
+.removeFromPlaylist {
+    color: rgb(207, 207, 207);
+    background-color: rgb(39, 39, 39);
+    font-size: 10px;
+    display: flex;
+    border: none;
+    border-radius: 20px;
+    margin-top: 2px;
+    margin-left: 25px;
+    margin-bottom: 10px;
+}
+
+.removeFromPlaylist:hover {
+    background-color: black;
+}
+
+.playlistAlbumsContainer {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+.playlistAlbumsContainer h1 {
+    width: 100%;
+    margin-left: 20px
+}
+
+.currentPlayingAlbum {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    background-color: black;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    color: rgb(223, 223, 223);
+}
+
+.currentPlayingAlbum h2 {
+    margin: 0px;
+}
+
+.currentPlayingAlbum h3 {
+    margin: 0px;
+    color: grey;
+    margin-top: 5px;
+}
+
+.mainPlaylistDisplay {
+    padding-left: 0px;
 }

@@ -4,7 +4,6 @@ import {getAlbumsThunk} from "../../store/album"
 import {createPlaylistAlbumThunk} from "../../store/playlistAlbum"
 import {getPlayerAlbum} from "../../store/player"
 import {getPlaylistsThunk} from "../../store/playlist"
-import Inner from "../Inner/Inner"
 import {createLastPlayThunk, editLastPlayThunk, getLastPlayThunk} from "../../store/lastPlay"
 import {getPlaysThunk, createPlayThunk, editPlayThunk} from "../../store/play"
 

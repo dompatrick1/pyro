@@ -24,6 +24,7 @@ function Playlist() {
             <input
                 type="text"
                 placeholder="New playlist name..."
+                maxlength="20"
                 required
                 value={playlistName}
                 onChange={e => setPlaylistName(e.target.value)}
