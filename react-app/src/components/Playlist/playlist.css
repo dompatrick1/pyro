@@ -1,0 +1,25 @@
+.submitNewPlaylistButton {
+    border: none;
+    background: none;
+    color: grey;
+    font-size: 17px;
+    padding-left: 8px;
+}
+
+.submitNewPlaylistButton:hover {
+    color: white
+}
+
+.newPlaylistForm input {
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    height: 20px;
+    width: 185px;
+    padding-left: 10px;
+    color: rgb(236, 236, 236);
+}
+
+.newPlaylistForm {
+    display: flex;
+}

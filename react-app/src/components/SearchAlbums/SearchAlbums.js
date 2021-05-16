@@ -6,6 +6,7 @@ import {getPlayerAlbum} from "../../store/player"
 import {getPlaylistsThunk} from "../../store/playlist"
 import {createLastPlayThunk, editLastPlayThunk, getLastPlayThunk} from "../../store/lastPlay"
 import {getPlaysThunk, createPlayThunk, editPlayThunk} from "../../store/play"
+import "./search.css"
 
 export const searchInner = (content) => {
     return content
@@ -19,7 +20,7 @@ function SearchAlbums(props) {
     const playlists = Object.values(useSelector(state => state.playlists))
     const plays = Object.values(useSelector(state => state.plays))
     const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
-    const [searchTerm, setSearchTerm] = useState('')
+    const [searchTerm, setSearchTerm] = useState("")
 
     useEffect(() => {
         dispatch(getAlbumsThunk())
@@ -88,11 +89,12 @@ function SearchAlbums(props) {
 // -----------------------------------------------------------------------------------
 
         return (
-            <div>
-                <form>
-                    <input type="text" placeholder="Search..." value={searchTerm} onChange={(e) => {setSearchTerm(e.target.value)}}/>
-                    {searchTerm.length ?
-                        albums.filter(album => {
+            <div className="searchFormContainer">
+                <form className="searchForm">
+                    <div className="searchInputFieldDiv">
+                        <input className="searchInputField" type="text" placeholder="Search..." value={searchTerm} onChange={(e) => {setSearchTerm(e.target.value)}}/>
+                    </div>
+                        {albums.filter(album => {
                             if (searchTerm === "") {
                                 return album
                             } else if (album.title.toLowerCase().includes(searchTerm.toLowerCase()) || album.artist.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -100,7 +102,7 @@ function SearchAlbums(props) {
                             }
                         }).map((album, key) => {
                             return (
-                                <div>
+                                <div className="individualSearchedAlbum">
                                     <button  onClick={e => albumSelect(e, album.id)}>
                                         <img className="albumImage" src={`${IMAGE_FOLDER}${album.image}`} alt={`${IMAGE_FOLDER}${album.image}`}></img>
                                     </button>
@@ -116,9 +118,7 @@ function SearchAlbums(props) {
                                     : null}
                                 </div>
                             )
-                        })
-
-                    : null}
+                        })}
                 </form>
             </div>
         )

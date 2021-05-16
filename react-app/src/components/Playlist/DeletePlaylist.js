@@ -7,7 +7,21 @@ import '../Main/main.css'
 function DeletePlaylist(props) {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
+    const playlistAlbums = Object.values(useSelector(state => state.playlistAlbums))
+    const albums = Object.values(useSelector(state => state.albums))
     const [deleteClicked, setDeleteClicked] = useState(0)
+
+
+    let playlistAlbumsList = []
+    if (playlistAlbums) {
+        albums.map(album => {
+            playlistAlbums.map(playlistAlbum => {
+                if (playlistAlbum.albumId === album.id) {
+                    playlistAlbumsList.push(album)
+                }
+            })
+        })
+    }
 
     const setDelete = (e, id) => {
         e.preventDefault()
@@ -17,8 +31,11 @@ function DeletePlaylist(props) {
     const deletePlaylist = async (e, id) => {
         e.preventDefault()
         setDeleteClicked(0)
-        await dispatch(deletePlaylistAlbumsThunk(id))
-        dispatch(deletePlaylistThunk(id))
+        if (playlistAlbumsList.length > 0) {
+            await dispatch(deletePlaylistAlbumsThunk(id))
+        }
+
+        await (dispatch(deletePlaylistThunk(id)))
         dispatch(getPlaylistsThunk(sessionUser.id))
         dispatch(getPlaylistAlbumsThunk(id))
     }

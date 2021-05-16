@@ -1,0 +1,40 @@
+/* .individualSearchedAlbum {
+    display: flex;
+    flex-direction: row;
+} */
+
+
+.searchFormContainer {
+    width: 100%;
+}
+
+.searchForm {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%
+}
+
+.searchInputFieldDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.searchInputField {
+    height: 20px;
+    min-width: 250px;
+    max-width: 250px;
+    /* margin-right: 250px;
+    margin-left: 250px; */
+    margin-bottom: 10px;
+    background-color: black;
+    border: none;
+    height: 25px;
+    color: rgb(228, 228, 228);
+    padding-left: 15px;
+    border-radius: 5px;
+    border: 1px solid white;
+    font-size: 20px;
+}

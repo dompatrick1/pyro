@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {createPlaylistThunk, getPlaylistThunk} from "../../store/playlist"
+import "./playlist.css"
 
 function Playlist() {
     const dispatch = useDispatch()
@@ -20,7 +21,7 @@ function Playlist() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="newPlaylistForm" onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="New playlist name..."
@@ -29,7 +30,7 @@ function Playlist() {
                 value={playlistName}
                 onChange={e => setPlaylistName(e.target.value)}
             />
-            <button type='submit'>Submit</button>
+            <button className="submitNewPlaylistButton" type='submit'><i class="fa fa-plus"></i></button>
         </form>
     )
 }

@@ -6,13 +6,13 @@ import {getPlaysThunk, createPlayThunk, editPlayThunk} from "../../store/play"
 import {getPlaylistsThunk} from "../../store/playlist"
 import {getPlaylistAlbumsThunk, createPlaylistAlbumThunk, deletePlaylistAlbumThunk} from "../../store/playlistAlbum"
 import crate from "./crate.png"
+import record from "./flame_record.png"
 import UsersList from "../UsersList"
 import User from "../User"
 import Playlist from "../Playlist/Playlist"
 import DeletePlaylist from "../Playlist/DeletePlaylist"
 import SearchAlbums from "../SearchAlbums/SearchAlbums"
 import {searchInner} from "../SearchAlbums/SearchAlbums"
-// import Inner from "../Inner/Inner"
 import {getPlayerAlbum} from "../../store/player"
 import "./main.css"
 
@@ -52,10 +52,20 @@ function Main(props) {
                         <h3>{albums[selectAlbumId - 1].artist}</h3>
                     </div>
                 : null}
+                {playlists.length > 0 ?
+                    <form>
+                        <select  onChange={e => addToPlaylist(e, e.target.value, albums[selectAlbumId - 1].id)}>
+                            <option value="" disabled selected hidden>Add To Playlist</option>
+                            {playlists.map(playlist => (
+                                <option value={playlist.id}>{playlist.name}</option>
+                            ))}
+                        </select>
+                    </form>
+                : null}
             </div>
         )
     } else {
-        inner = (<p>Click an album</p>)
+        inner = (<p>Click and album to begin playing</p>)
     }
 
     let playlistAlbumsList = []
@@ -128,6 +138,16 @@ function Main(props) {
         dispatch(createPlaylistAlbumThunk(payload))
     }
 
+    function addToPlaylist(e, playlistId, albumId) {
+        e.preventDefault()
+
+        const payload = {
+            albumId,
+            playlistId
+        }
+        dispatch(createPlaylistAlbumThunk(payload))
+    }
+
     function displaySearch(e) {
         e.preventDefault()
         setSearchOn(true)
@@ -166,14 +186,17 @@ function Main(props) {
         <div className="mainContainer">
             <div className="userNameLogout">
                 <User />
-                <button onClick={(e) => displaySearch(e)}>Search albums and artists</button>
+            </div>
+            <div className="mainSearchCreatePlaylist">
+                <h3>PYR<img className="flameRecord" src={record} alt={record}></img></h3>
+                <button className="displaySearchButton" onClick={(e) => displaySearch(e)}><i className="searchIcon" class="fa fa-search"></i>{` Search albums and artists`}</button>
+
+                    <Playlist />
+
             </div>
             <div className="mainPlayListContainer">
-                <div className="mainPlaylistForm">
-                    <Playlist />
-                </div>
                 <div className="mainPlaylistsDisplay">
-                    {playlists.map(playlist => (
+                    {playlists.reverse().map(playlist => (
                             <div className="playlistContainer">
                                 <button className="playlistButton" onClick={e => displayPlaylistAlbums(e, playlist.id, playlist.name)}>
                                     <img className="playlistCrateImage" src={crate} alt={crate}></img>
@@ -189,8 +212,10 @@ function Main(props) {
             </div>
             <div className="mainInner">
                 {searchOn === true ?
-                <div>
-                    <button onClick={e => exitSearch(e)}>exit search</button>
+                <div className="mainSearchFormContainer">
+                    <div className="exitSearchButtonDiv">
+                        <button onClick={e => exitSearch(e)}><i class="fa fa-arrow-circle-left"></i></button>
+                    </div>
                     <SearchAlbums selectAlbumId={selectAlbumId} />
                 </div>
                 : playlistAlbumsDisplay === true && playlistAlbums.length > 0 ?

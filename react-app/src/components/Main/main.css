@@ -17,17 +17,84 @@ body, html {
     grid-template-columns: 1fr 2.6fr 1fr;
     grid-template-rows: 1fr, 2fr, 1fr;
     grid-template-areas:
-        "user topAlbums friends"
+        "user topAlbums session"
         "playlists inner friends"
         "player player player";
     /* height: 100vh; */
 }
 
 .userNameLogout {
-    grid-area: user;
+    grid-area: session;
     margin-top: 0px;
     min-height: 20vh;
+    max-height: 20vh;
+    padding-left: 20px;
+    border-right: 1px solid black
 }
+
+.mainSearchCreatePlaylist {
+    grid-area: user;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: 20vh;
+    max-height: 20vh;
+
+}
+
+.mainSearchCreatePlaylist h3 {
+    margin: 0;
+    font-size: 47px;
+    letter-spacing: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:rgb(17, 17, 17);
+    font-weight: bold;
+    text-shadow: -1px 0 rgb(187, 116, 58), 0 1px rgb(187, 116, 58), 1px 0 rgb(187, 116, 58), 0 -1px rgb(187, 116, 58);
+}
+
+.flameRecord {
+    height: 35px;
+    width: 35px;
+    border: 2px solid rgb(187, 116, 58);
+    border-radius: 100%;
+    animation: rotation 4s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+  .displaySearchButton {
+      border: none;
+      background: none;
+      color: rgb(194, 194, 194);
+      border-bottom: 2px solid black;
+      margin-bottom: 6px;
+      margin-top: 0px;
+      padding-bottom: 4px;
+      padding-top: 4px;
+      font-size: 17px;
+  }
+
+  .displaySearchButton:hover {
+    background-color: rgba(0, 0, 0, 0.18);
+    border-radius: 5px;
+    color: white;
+  }
+
+  .searchIcon {
+      margin-right: 2px;
+  }
 
 .mainPlayListContainer {
     grid-area: playlists;
@@ -35,11 +102,10 @@ body, html {
     max-height: 58vh;
     max-width: 100%;
     min-width: 250px;
-    /* padding-left: 20px; */
+    border-right: 1px solid black;
     overflow:auto;
     overflow-wrap: break-word;
-
-    /* overflow-y: scroll; */
+    /* padding-top: 20px; */
 }
 
 .mainPlaylistForm {
@@ -50,12 +116,14 @@ body, html {
     grid-area: friends;
     max-width: 250px;
     min-width: 200px;
+    border-left: 1px solid black;
 }
 
 .mainPlayer {
     grid-area: player;
-    max-height: 22vh;
-    min-height: 22vh;
+    border-top: 1px solid black;
+    max-height: 21.8vh;
+    min-height: 21.8vh;
     overflow:hidden;
     background-color: rgb(40, 51, 102);
 }
@@ -78,6 +146,9 @@ body, html {
 .mainTopAlbums {
     grid-area: topAlbums;
     background-color: rgb(40, 51, 102);
+    border-bottom: 1px solid black;
+    min-height: 20vh;
+    max-height: 20vh;
 }
 
 .albumImage {
@@ -102,6 +173,7 @@ body, html {
     display: flex;
     align-items: center;
     padding-right: 5px;
+    margin-top: 6px;
     /* width: 100%; */
 }
 
@@ -141,9 +213,9 @@ body, html {
     position:fixed;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: rgb(199, 199, 199);
-    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgb(233, 233, 233);
+    font-size: 30px;
 }
 
 .deletePlaylistConfirmationContainer button {
@@ -242,6 +314,27 @@ body, html {
     margin-top: 5px;
 }
 
-.mainPlaylistDisplay {
-    padding-left: 0px;
+.mainSearchFormContainer {
+    padding-top: 5px;
+    /* display: flex; */
+    /* justify-content: flex-start; */
+    /* align-items: flex-start; */
+}
+
+.mainSearchFormContainer button {
+    border:none;
+    background: none;
+    font-size: 35px;
+    color: rgb(199, 199, 199);
+    display: flex;
+    align-content: flex-start;
+    margin-bottom: 4px;
+
+}
+
+.exitSearchButtonDiv {
+    display: flex;
+    align-content: flex-start;
+    width: 100%;
+    margin: 0px;
 }
