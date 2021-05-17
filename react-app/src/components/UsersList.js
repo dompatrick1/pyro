@@ -7,6 +7,7 @@ import {getPlayerAlbum} from "../store/player"
 import "./follow/follow.css"
 
 
+
 function UsersList() {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("")
@@ -14,6 +15,7 @@ function UsersList() {
   const followingList = Object.values(useSelector(state => state.follows))
   const lastPlays = Object.values(useSelector(state => state.lastPlays))
   const albums = Object.values(useSelector(state => state.albums))
+  const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
   const dispatch = useDispatch()
 
 
@@ -84,7 +86,7 @@ function UsersList() {
                         <div className="followingContainer">
                           <div>
                             <button className="followLastPlayButton" onClick={e => selectAlbum(e, albums[play.albumId - 1].id)}>
-                              <img className="followImage" src={albums[play.albumId - 1].image} alt={albums[play.albumId - 1].image}></img>
+                              <img className="followImage" src={`${IMAGE_FOLDER}${albums[play.albumId - 1].image}`} alt={albums[play.albumId - 1].image}></img>
                             </button>
                           </div>
                           <div className="followInfoContainer">

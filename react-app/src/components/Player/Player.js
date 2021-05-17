@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import {getAlbumSongsThunk} from "../../store/song"
 import "./player.css"
+import needleSound from "./Needle.mp3"
 
 function Player() {
     const dispatch = useDispatch()
@@ -100,7 +101,7 @@ function Player() {
             :null}
                 {songs.length ?
                 <div className="audioContainer">
-                    <audio id="audio1" src="/Needle.mp3"></audio>
+                    <audio id="audio1" src={needleSound}></audio>
 
                     <audio
                         id="audio"
