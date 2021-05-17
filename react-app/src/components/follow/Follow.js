@@ -29,6 +29,7 @@ function Follow(props) {
       }
 
       const unfollow = async (e, userId) => {
+        e.preventDefault()
           let id;
         followingList.forEach(follow => {
           if (follow.followed_id === userId && follow.follower_id === sessionUser.id) {
@@ -37,7 +38,7 @@ function Follow(props) {
         })
         await dispatch(deleteFollowThunk(id))
         dispatch(getFollowsThunk(sessionUser.id))
-        props.setSearchTerm("")
+        // props.setSearchTerm("")
       }
 
     return (
