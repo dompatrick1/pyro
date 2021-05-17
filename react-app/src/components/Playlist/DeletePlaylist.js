@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import {useDispatch, useSelector} from "react-redux"
 import {getPlaylistsThunk, deletePlaylistThunk} from "../../store/playlist"
 import {deletePlaylistAlbumsThunk, getPlaylistAlbumsThunk} from "../../store/playlistAlbum"
