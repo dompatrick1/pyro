@@ -104,10 +104,14 @@ function SearchAlbums(props) {
                             return (
                                 <div className="individualSearchedAlbum">
                                     <button  onClick={e => albumSelect(e, album.id)}>
-                                        <img className="albumImage" src={`${IMAGE_FOLDER}${album.image}`} alt={`${IMAGE_FOLDER}${album.image}`}></img>
+                                        <div className="searchAlbumInfo">
+                                            <img className="albumImage" src={`${IMAGE_FOLDER}${album.image}`} alt={`${IMAGE_FOLDER}${album.image}`}></img>
+                                            <p>{album.title}</p>
+                                            <p>{album.artist}</p>
+                                        </div>
                                     </button>
                                     {playlists.length > 0 ?
-                                        <form>
+                                        <form className="searchAddToPlaylist">
                                             <select  onChange={e => addToPlaylist(e, e.target.value, album.id)}>
                                                 <option value="" disabled selected hidden>Add To Playlist</option>
                                                 {playlists.map(playlist => (

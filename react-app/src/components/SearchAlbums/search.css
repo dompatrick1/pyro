@@ -1,7 +1,14 @@
-/* .individualSearchedAlbum {
+.individualSearchedAlbum {
     display: flex;
-    flex-direction: row;
-} */
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0,0,0,.7);
+    border-radius: 5px;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding-top: 2px;
+    padding-bottom: 2px
+}
 
 
 .searchFormContainer {
@@ -26,8 +33,6 @@
     height: 20px;
     min-width: 250px;
     max-width: 250px;
-    /* margin-right: 250px;
-    margin-left: 250px; */
     margin-bottom: 10px;
     background-color: black;
     border: none;
@@ -37,4 +42,32 @@
     border-radius: 5px;
     border: 1px solid white;
     font-size: 20px;
+}
+
+.searchAlbumInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchAlbumInfo p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.searchAddToPlaylist select {
+    background-color: black;
+    color: rgb(218, 218, 218);
+    border: none;
+    font-size: 12px;
+    /* margin-bottom: 5px; */
+}
+
+.individualSearchedAlbum button {
+    margin-bottom: 0px;
+}
+
+.individualSearchedAlbum:hover {
+    transform: scale(1.009);
+    background-color: black;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {useDispatch, useSelector} from "react-redux"
 import {createFollowingThunk, deleteFollowThunk, getFollowsThunk} from "../../store/following"
+import "./follow.css"
 
 function Follow(props) {
     const dispatch = useDispatch()
@@ -43,10 +44,10 @@ function Follow(props) {
         <div>
             {props.user.id !== sessionUser.id ?
                 <div key={props.user.id}>
-                <p>{props.user.username}</p>
+                <p className="followedUserName">{`${props.user.username}`}</p>
                 {!followingIdList.includes(props.user.id) ?
-                <button onClick={e => follow(e, props.user.id)}>Follow +</button>
-                : <button onClick={e => unfollow(e, props.user.id)}>unfollow</button>}
+                <button className="followButton" onClick={e => follow(e, props.user.id)}>Follow +</button>
+                : <button className="followButton" onClick={e => unfollow(e, props.user.id)}>unfollow</button>}
                 </div>
             : null}
         </div>

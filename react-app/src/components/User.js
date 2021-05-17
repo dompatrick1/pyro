@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton"
+import "./user.css"
 
 
 function User() {
@@ -24,12 +25,11 @@ function User() {
   }
 
   return (
-    <ul>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
+    <div className="userWelcome">
+      <strong>Welcome,</strong>
+      <strong>{user.username}</strong>
       <LogoutButton/>
-    </ul>
+    </div>
   );
 }
 export default User;

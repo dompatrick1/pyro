@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import {getPlayerAlbum} from "../../store/player"
+import "../user.css"
 
 const LogoutButton = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const LogoutButton = () => {
     dispatch(getPlayerAlbum(0))
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <button className="logoutButton" onClick={onLogout}>Logout</button>;
 };
 
 export default LogoutButton;
