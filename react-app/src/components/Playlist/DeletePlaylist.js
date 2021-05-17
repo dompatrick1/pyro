@@ -31,13 +31,12 @@ function DeletePlaylist(props) {
     const deletePlaylist = async (e, id) => {
         e.preventDefault()
         setDeleteClicked(0)
-        if (playlistAlbumsList.length > 0) {
-            await dispatch(deletePlaylistAlbumsThunk(id))
-        }
 
-        await (dispatch(deletePlaylistThunk(id)))
+        await dispatch(deletePlaylistAlbumsThunk(id))
+        await dispatch(deletePlaylistThunk(id))
         dispatch(getPlaylistsThunk(sessionUser.id))
         dispatch(getPlaylistAlbumsThunk(id))
+        // props.setPlaylistAlbumsDisplay(false)
     }
 
     return (

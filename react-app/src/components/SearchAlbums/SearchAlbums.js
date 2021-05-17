@@ -16,7 +16,7 @@ function SearchAlbums(props) {
     const dispatch = useDispatch()
     const albums = Object.values(useSelector(state => state.albums))
     const sessionUser = useSelector(state => state.session.user)
-    const lastPlayed = useSelector(state => state.lastPlays.lastPlay)
+    const lastPlayed = Object.values(useSelector(state => state.lastPlays))
     const playlists = Object.values(useSelector(state => state.playlists))
     const plays = Object.values(useSelector(state => state.plays))
     const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
@@ -40,11 +40,23 @@ function SearchAlbums(props) {
         dispatch(createPlaylistAlbumThunk(payload))
     }
 
+    let lastPlay;
+    if (lastPlayed) {
+        lastPlayed.forEach(last => {
+            if (last.userId === sessionUser.id) {
+                lastPlay = last
+                console.log(last)
+            }
+        })
+    }
+
     // Album Select Actions ----------------------------------------------------------
     const albumSelect = async (e, id) => {
         e.preventDefault()
         dispatch(getPlayerAlbum(id))
-        setSearchTerm("")
+        props.setSearchOn(false)
+        props.setPlaylistAlbumsDisplay(false)
+
         const pay ={
             playCount: 1,
             userId: sessionUser.id,
@@ -70,22 +82,23 @@ function SearchAlbums(props) {
             }
         }
 
-        if (!lastPlayed) {
+        if (!lastPlay) {
             const payload = {
                 userId: sessionUser.id,
                 albumId: id
             }
             dispatch(createLastPlayThunk(payload))
-        } else if (lastPlayed){
+        } else if (lastPlay){
             const payload = {
-                id: lastPlayed.id,
+                id: lastPlay.id,
                 userId: sessionUser.id,
                 albumId: id
             }
             await dispatch(editLastPlayThunk(payload))
-            dispatch(getLastPlayThunk(sessionUser.id))
+            dispatch(getLastPlayThunk())
         }
     }
+
 // -----------------------------------------------------------------------------------
 
         return (

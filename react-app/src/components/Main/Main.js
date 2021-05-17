@@ -215,7 +215,7 @@ function Main(props) {
                                     <img className="playlistCrateImage" src={crate} alt={crate}></img>
                                     <h3>{playlist.name}</h3>
                                 </button>
-                                <DeletePlaylist playlist={playlist} playlists={playlists}/>
+                                <DeletePlaylist playlist={playlist} playlists={playlists} setPlaylistAlbumsDisplay={setPlaylistAlbumsDisplay}/>
                             </div>
                     ))}
                 </div>
@@ -229,7 +229,7 @@ function Main(props) {
                     <div className="exitSearchButtonDiv">
                         <button onClick={e => exitSearch(e)}><i class="fa fa-arrow-circle-left"></i></button>
                     </div>
-                    <SearchAlbums selectAlbumId={selectAlbumId} />
+                    <SearchAlbums  setSearchOn={setSearchOn} setPlaylistAlbumsDisplay={setPlaylistAlbumsDisplay}/>
                 </div>
                 : playlistAlbumsDisplay === true && playlistAlbums.length > 0 ?
                     <div className="playlistAlbumsContainer">
