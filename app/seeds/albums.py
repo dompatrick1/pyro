@@ -17,6 +17,12 @@ def seed_albums():
         Album(
             title="Hotel California", artist="Eagles", year="1977", image='/hotel-california.jpg'
         ),
+        Album(
+            title="Cosmo's Factory", artist="CCR", year="1970", image='/ccr.jpg'
+        ),
+        Album(
+            title="Times They Are a-Changin'", artist="Bob Dylan", year="1964", image='/bob-dylan.jpg'
+        ),
     ]
 
     db.session.add_all(albums)

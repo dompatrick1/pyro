@@ -42,7 +42,7 @@ function TopAlbums({albumSelect}) {
                 <div className="singleTopAlbumContainer">
                     <button onClick={(e) => albumSelect(e, final[0].id)}>
                         <img className="topImage" src={final[0].image} alt={final[0].image}></img>
-                        <p>{final[0].title}</p>
+                        {/* <p>{final[0].title}</p> */}
                     </button>
                 </div>
             : null}
@@ -50,7 +50,7 @@ function TopAlbums({albumSelect}) {
                 <div className="singleTopAlbumContainer">
                     <button onClick={(e) => albumSelect(e, final[1].id)}>
                         <img className="topImage" src={final[1].image} alt={final[1].image}></img>
-                        <p>{final[1].title}</p>
+                        {/* <p>{final[1].title}</p> */}
                     </button>
                 </div>
             : null}
@@ -58,7 +58,7 @@ function TopAlbums({albumSelect}) {
                 <div className="singleTopAlbumContainer">
                     <button onClick={(e) => albumSelect(e, final[2].id)}>
                         <img className="topImage" src={final[2].image} alt={final[2].image}></img>
-                        <p>{final[2].title}</p>
+                        {/* <p>{final[2].title}</p> */}
                     </button>
                 </div>
             : null}

@@ -59,7 +59,7 @@ function Main(props) {
         inner = (
             <div className="currentPlayingAlbum">
                 {albums[selectAlbumId - 1] ?
-                    <div >
+                    <div className="alignCurrentPlaying">
                         <img className="playingAlbumImage" src={`${IMAGE_FOLDER}${albums[selectAlbumId - 1].image}`} alt={albums[selectAlbumId - 1].image}></img>
                         <h2>{albums[selectAlbumId - 1].title}</h2>
                         <h3>{albums[selectAlbumId - 1].artist}</h3>

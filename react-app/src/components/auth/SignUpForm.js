@@ -40,8 +40,8 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
+    <form className="loginFormForm" onSubmit={onSignUp}>
+      <div className="emailDiv">
         <label>User Name</label>
         <input
           type="text"
@@ -50,7 +50,7 @@ const SignUpForm = () => {
           value={username}
         ></input>
       </div>
-      <div>
+      <div className="emailDiv">
         <label>Email</label>
         <input
           type="text"
@@ -59,7 +59,7 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
-      <div>
+      <div className="emailDiv">
         <label>Password</label>
         <input
           type="password"
@@ -68,7 +68,7 @@ const SignUpForm = () => {
           value={password}
         ></input>
       </div>
-      <div>
+      <div className="emailDiv">
         <label>Repeat Password</label>
         <input
           type="password"
@@ -78,7 +78,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <button className="submitLogin" type="submit">Sign Up</button>
     </form>
   );
 };

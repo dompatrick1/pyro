@@ -57,8 +57,8 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
-        <button type="button" onClick={async(e) =>{
+        <button className="submitLogin" type="submit">Login</button>
+        <button className="submitLogin" type="button" onClick={async(e) =>{
             setEmail("demo@aa.io")
             setPassword("password")
             dispatch(login("demo@aa.io", "password"));

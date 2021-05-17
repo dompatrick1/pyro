@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux"
 import LoginForm from "../auth/LoginForm"
 import SignUpForm from "../auth/SignUpForm"
 import record from "./flame_record.png"
+import collage from "./loginCollage.png"
 import "./home.css"
 
 function Home() {
@@ -25,14 +26,13 @@ function Home() {
                 <h1>PYR<img className="flameRecordLogin" src={record} alt={record}></img></h1>
                 <h4>Put Your Records On</h4>
             </div>
-            {/* <div className="loginSignupButtons">
-                <button onClick={e => loginForm(e)}>Login</button>
-                <button onClick={e => signUpForm(e)}>Signup</button>
-            </div> */}
+            <div className="collage">
+                <img src={collage} alt={collage}></img>
+            </div>
             <div className="loginSignupContainer">
-                <div>
-                <button onClick={e => loginForm(e)}>Login</button>
-                <button onClick={e => signUpForm(e)}>Signup</button>
+                <div className="loginSignupButtonsDiv">
+                <button className="loginSignupButtons" onClick={e => loginForm(e)}>Login</button>
+                <button className="loginSignupButtons" onClick={e => signUpForm(e)}>Signup</button>
                 </div>
                 {login === true ?
                     <LoginForm />

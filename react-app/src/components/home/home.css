@@ -4,7 +4,7 @@ body {
 
 .homeParent {
     display: grid;
-    grid-template-columns: 1fr, 1fr, 1fr;
+    grid-template-columns: 2fr, 1fr, 1fr;
     grid-template-areas:
         "logo images images"
         "login images images";
@@ -24,6 +24,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: black;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .loginSignupContainer {
@@ -85,8 +88,69 @@ body {
 
   .logoDiv h4 {
       margin-top: 0px;
-      color: rgb(206, 102, 17);
+      color: rgb(184, 184, 184);
       text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
       font-size: 40px;
+      font-weight: lighter;
       letter-spacing: 3px;
+      margin-bottom: 0px;
+  }
+
+  .loginSignupButtons {
+      color: white;
+      background-color: black;
+      border: none;
+      border-radius: 2px;
+      font-size: 16px;
+      width: 70px;
+      padding: 4px;
+  }
+
+  .loginSignupButtonsDiv {
+      display: flex;
+      flex-direction: row;
+  }
+
+  .loginSignupButtons:hover {
+      background-color: rgb(58, 57, 57);
+  }
+
+  .loginFormForm input {
+      background-color: black;
+      color: rgb(221, 221, 221);
+      padding-left: 10px;
+      font-size: 16px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+  }
+
+  .submitLogin {
+      background-color: rgb(61, 61, 61);
+      color: rgb(214, 212, 212);
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-top: 5px;
+      width: 70px
+  }
+
+  .submitLogin:hover {
+      background-color: rgb(54, 54, 54);
+      color: white;
+  }
+
+  .collage {
+      grid-area: images;
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      height: 100%;
+  }
+
+  .collage img {
+      height: 93vh;
+
   }

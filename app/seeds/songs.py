@@ -198,6 +198,90 @@ def seed_songs():
             songTitle="The Last Resort",
             song="https://pyro-songs.s3.us-east-2.amazonaws.com/The-Last-Resort.mp3", albumId=5
         ),
+        Song(
+            songTitle="Ramble Tamble",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Ramble-Tamble.mp3", albumId=6
+        ),
+        Song(
+            songTitle="Before You Accuse Me",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Before-You-Accuse-Me.mp3", albumId=6
+        ),
+        Song(
+            songTitle="Travelin' Band",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Travelin-Band.mp3", albumId=6
+        ),
+        Song(
+            songTitle="Ooby Dooby",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Ooby-Dooby.mp3", albumId=6
+        ),
+        Song(
+            songTitle="Lookin' Out My Back Door",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Lookin-Out-My-Back-Door.mp3", albumId=6
+        ),
+        Song(
+            songTitle="Run Through The Jungle",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Run-Through-The-Jungle.mp3", albumId=6
+        ),
+        Song(
+            songTitle="Up Around The Bend",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Up-Around-The-Bend.mp3", albumId=6
+        ),
+        Song(
+            songTitle="My Baby Left Me",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/My-Baby-Left-Me.mp3", albumId=6
+        ),
+        Song(
+            songTitle="Who'll Stop The Rain",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Wholl-Stop-The-Rain.mp3", albumId=6
+        ),
+        Song(
+            songTitle="I Heard It Through The Grapevine",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/I-Heard-It-Through-The-Grapevine.mp3", albumId=6
+        ),
+        Song(
+            songTitle="Long As I Can See The Light",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Long-As-I-Can-See-The-Light.mp3", albumId=6
+        ),
+        Song(
+            songTitle="The Times They Are a-Changin'",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/The-Times-They-Are-A-Changin.mp3", albumId=7
+        ),
+        Song(
+            songTitle="Ballad of Hollis Brown",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Ballad-of-Hollis-Brown.mp3", albumId=7
+        ),
+        Song(
+            songTitle="With God on Our Side",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/With-God-on-Our-Side.mp3", albumId=7
+        ),
+        Song(
+            songTitle="One Too Many Mornings",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/One-Too-Many-Mornings.mp3", albumId=7
+        ),
+        Song(
+            songTitle="North Country Blues",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/North-Country-Blues.mp3", albumId=7
+        ),
+        Song(
+            songTitle="Only a Pawn in Their Game",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Only-A-Pawn-In-Their-Game.mp3", albumId=7
+        ),
+        Song(
+            songTitle="Boots of Spanish Leather",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Boots-of-Spanish-Leather.mp3", albumId=7
+        ),
+        Song(
+            songTitle="When the Ship Comes In",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/When-the-Ship-Comes-In.mp3", albumId=7
+        ),
+        Song(
+            songTitle="The Lonesome Death of Hattie Carroll",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/The-Lonesome-Death-of-Hattie-Carroll.mp3", albumId=7
+        ),
+        Song(
+            songTitle="Restless Farewell",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Restless-Farewell.mp3", albumId=7
+        ),
     ]
 
     db.session.add_all(songs)
