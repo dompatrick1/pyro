@@ -5,10 +5,16 @@ from flask_login import login_required, current_user
 lastPlay_routes = Blueprint('lastPlays', __name__)
 
 
-@lastPlay_routes.route('/user/<int:id>')
+@lastPlay_routes.route('/')
 @login_required
-def get_lastPlay(id):
-    lastPlay = LastPlay.query.filter(LastPlay.userId == id).first()
+def get_lastPlay():
+    lastPlays = LastPlay.query.all()
+    return {"lastPlays": [lastPlay.to_dict() for lastPlay in lastPlays]}
+
+@lastPlay_routes.route('/user/<userId>')
+@login_required
+def get_user_lastPlay(userId):
+    lastPlay = LastPlay.query.filter(LastPlay.userId == userId).first()
     return {"lastPlay": lastPlay.to_dict()}
 
 

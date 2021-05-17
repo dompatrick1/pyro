@@ -19,7 +19,7 @@ function Follow(props) {
 
     function follow(e, userId) {
         e.preventDefault()
-
+        props.setSearchTerm("")
         const payload = {
           follower_id: sessionUser.id,
           followed_id: userId
@@ -36,17 +36,18 @@ function Follow(props) {
         })
         await dispatch(deleteFollowThunk(id))
         dispatch(getFollowsThunk(sessionUser.id))
+        props.setSearchTerm("")
       }
 
     return (
         <div>
             {props.user.id !== sessionUser.id ?
-                <li key={props.user.id}>
+                <div key={props.user.id}>
                 <p>{props.user.username}</p>
                 {!followingIdList.includes(props.user.id) ?
                 <button onClick={e => follow(e, props.user.id)}>Follow +</button>
                 : <button onClick={e => unfollow(e, props.user.id)}>unfollow</button>}
-                </li>
+                </div>
             : null}
         </div>
     )

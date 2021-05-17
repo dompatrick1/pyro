@@ -7,13 +7,14 @@ import {getPlaylistsThunk} from "../../store/playlist"
 import {getPlaylistAlbumsThunk, createPlaylistAlbumThunk, deletePlaylistAlbumThunk} from "../../store/playlistAlbum"
 import crate from "./crate.png"
 import record from "./flame_record.png"
-import UsersList from "../UsersList"
+import UsersList from "../follow/UsersList"
 import User from "../User"
 import Playlist from "../Playlist/Playlist"
 import DeletePlaylist from "../Playlist/DeletePlaylist"
 import SearchAlbums from "../SearchAlbums/SearchAlbums"
 import {searchInner} from "../SearchAlbums/SearchAlbums"
 import {getPlayerAlbum} from "../../store/player"
+import TopAlbums from "../TopAlbums/TopAlbums"
 import "./main.css"
 
 
@@ -22,7 +23,7 @@ function Main(props) {
     const selectAlbumId = useSelector(state => state.player.albumId)
     const sessionUser = useSelector(state => state.session.user)
     const albums = Object.values(useSelector(state => state.albums))
-    const lastPlayed = useSelector(state => state.lastPlays.lastPlay)
+    const lastPlayed = Object.values(useSelector(state => state.lastPlays))
     const plays = Object.values(useSelector(state => state.plays))
     const playlists = Object.values(useSelector(state => state.playlists))
     const playlistAlbums = Object.values(useSelector(state => state.playlistAlbums))
@@ -36,9 +37,21 @@ function Main(props) {
         dispatch(getAlbumsThunk())
         setSearchOn(false)
         dispatch(getPlaysThunk(sessionUser.id))
-        dispatch(getLastPlayThunk(sessionUser.id))
+        dispatch(getLastPlayThunk())
         dispatch(getPlaylistsThunk(sessionUser.id))
     }, [selectAlbumId])
+
+
+    let lastPlay;
+    if (lastPlayed) {
+        lastPlayed.forEach(last => {
+            if (last.userId === sessionUser.id) {
+                lastPlay = last
+                console.log(last)
+            }
+        })
+    }
+
 
 
     if (selectAlbumId > 0) {
@@ -53,8 +66,8 @@ function Main(props) {
                     </div>
                 : null}
                 {playlists.length > 0 ?
-                    <form>
-                        <select  onChange={e => addToPlaylist(e, e.target.value, albums[selectAlbumId - 1].id)}>
+                    <form >
+                        <select className="playingAlbumAddPlaylist" onChange={e => addToPlaylist(e, e.target.value, albums[selectAlbumId - 1].id)}>
                             <option value="" disabled selected hidden>Add To Playlist</option>
                             {playlists.map(playlist => (
                                 <option value={playlist.id}>{playlist.name}</option>
@@ -111,20 +124,20 @@ function Main(props) {
             }
         }
 
-        if (!lastPlayed) {
+        if (!lastPlay) {
             const payload = {
                 userId: sessionUser.id,
                 albumId: id
             }
             dispatch(createLastPlayThunk(payload))
-        } else if (lastPlayed){
+        } else if (lastPlay){
             const payload = {
-                id: lastPlayed.id,
+                id: lastPlay.id,
                 userId: sessionUser.id,
                 albumId: id
             }
             await dispatch(editLastPlayThunk(payload))
-            dispatch(getLastPlayThunk(sessionUser.id))
+            dispatch(getLastPlayThunk())
         }
     }
 
@@ -240,7 +253,8 @@ function Main(props) {
 
             </div>
             <div className="mainTopAlbums">
-                <p>My Top Albums:</p>
+                <h1 className="myTopAlbums">My Top Albums:</h1>
+                <TopAlbums albumSelect={albumSelect}/>
             </div>
         </div>
     )

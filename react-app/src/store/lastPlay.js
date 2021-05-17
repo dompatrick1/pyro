@@ -2,10 +2,16 @@
 const GET_LAST_PLAY = "lastPlays/GET_LAST_PLAY"
 const CREATE_LAST_PLAY = "lastPays/CREATE_LAST_PLAY"
 const EDIT_LAST_PLAY = "lastPlays/EDIT_LAST_PLAY"
+const GET_USER_LAST_PLAY = "lastPlays/GET_USER_LAST_PLAY"
 
 const getLastPlay = (lastPlays) => ({
     type: GET_LAST_PLAY,
     payload: lastPlays
+})
+
+const getUserLastPlay = (lastPlays) => ({
+  type: GET_USER_LAST_PLAY,
+  payload: lastPlays
 })
 
 const createLastPlay = (lastPlay) => ({
@@ -21,14 +27,24 @@ const editLastPlay = (lastPlay) => ({
 
 // Thunks
 
-export const getLastPlayThunk = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/lastPlays/user/${userId}`)
+export const getLastPlayThunk = () => async (dispatch) => {
+    const response = await fetch(`/api/lastPlays/`)
     if (!response.ok) {
       throw response
     }
 
     const lastPlay = await response.json();
     dispatch(getLastPlay(lastPlay))
+  }
+
+  export const getUserLastPlayThunk = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/lastPlays/user/${userId}`)
+    if (!response.ok) {
+      throw response
+    }
+
+    const lastPlay = await response.json();
+    dispatch(getUserLastPlay(lastPlay))
   }
 
 
@@ -77,13 +93,20 @@ export const getLastPlayThunk = (userId) => async (dispatch) => {
 
       switch (action.type) {
           case GET_LAST_PLAY:
-              return action.payload;
-            case CREATE_LAST_PLAY:
-                return {...lastPlays, [action.payload.id]: action.payload}
-            case EDIT_LAST_PLAY:
-                return {[action.payload.id]: action.payload}
-            default:
-                return lastPlays
+              const lastPlaysPayload = action.payload
+              const newLastPlays = {};
+              for (const lastPlay of lastPlaysPayload.lastPlays) {
+                newLastPlays[lastPlay.id] = lastPlay
+              }
+              return newLastPlays;
+          case GET_USER_LAST_PLAY:
+            return action.payload
+          case CREATE_LAST_PLAY:
+              return {...lastPlays, [action.payload.id]: action.payload}
+          case EDIT_LAST_PLAY:
+              return {[action.payload.id]: action.payload}
+          default:
+              return lastPlays
       }
   }
 

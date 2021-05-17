@@ -29,7 +29,7 @@ body, html {
     min-height: 20vh;
     max-height: 20vh;
     padding-left: 20px;
-    border-right: 1px solid black
+    border-right: 1px solid black;
 }
 
 .mainSearchCreatePlaylist {
@@ -98,8 +98,8 @@ body, html {
 
 .mainPlayListContainer {
     grid-area: playlists;
-    min-height: 58vh;
-    max-height: 58vh;
+    min-height: 57vh;
+    max-height: 57vh;
     max-width: 100%;
     min-width: 250px;
     border-right: 1px solid black;
@@ -116,14 +116,16 @@ body, html {
     grid-area: friends;
     max-width: 250px;
     min-width: 200px;
+    max-height: 57vh;
+    min-height: 57vh;
     border-left: 1px solid black;
 }
 
 .mainPlayer {
     grid-area: player;
     border-top: 1px solid black;
-    max-height: 21.8vh;
-    min-height: 21.8vh;
+    max-height: 22.4vh;
+    min-height: 22.4vh;
     overflow:hidden;
     background-color: rgb(40, 51, 102);
 }
@@ -135,7 +137,8 @@ body, html {
     justify-content: center;
     background-repeat: no-repeat;
     background-size: cover;
-    max-height: 58vh;
+    max-height: 57vh;
+    min-height: 57vh;
     overflow-y: scroll;
 }
 
@@ -149,6 +152,9 @@ body, html {
     border-bottom: 1px solid black;
     min-height: 20vh;
     max-height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .albumImage {
@@ -158,8 +164,8 @@ body, html {
 
 .playingAlbumImage {
     display: flex;
-    width: 250px;
-    height: 250px;
+    width: 230px;
+    height: 230px;
     border: 5px solid black;
 }
 
@@ -311,14 +317,23 @@ body, html {
 .currentPlayingAlbum h3 {
     margin: 0px;
     color: grey;
-    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+.playingAlbumAddPlaylist {
+    background-color:black;
+    color: rgb(224, 224, 224);
+    border: none;
+    font-size: 12px;
+}
+
+.playingAlbumAddPlaylist option {
+    border: none;
+    height: 10px;
 }
 
 .mainSearchFormContainer {
     padding-top: 5px;
-    /* display: flex; */
-    /* justify-content: flex-start; */
-    /* align-items: flex-start; */
 }
 
 .mainSearchFormContainer button {
@@ -337,4 +352,14 @@ body, html {
     align-content: flex-start;
     width: 100%;
     margin: 0px;
+}
+
+.myTopAlbums {
+    margin-right: 15px;
+    border-right: 1.5px solid black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    color: black;
+    font-weight: lighter;
 }
