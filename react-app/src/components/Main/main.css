@@ -23,6 +23,13 @@ body, html {
     /* height: 100vh; */
 }
 
+/* @media screen and (max-width: 1020px) {
+    .mainContainer {
+      float: none;
+      width: auto;
+    }
+  } */
+
 .userNameLogout {
     grid-area: session;
     margin-top: 0px;

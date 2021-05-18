@@ -46,7 +46,6 @@ function Main(props) {
         lastPlayed.forEach(last => {
             if (last.userId === sessionUser.id) {
                 lastPlay = last
-                console.log(last)
             }
         })
     }

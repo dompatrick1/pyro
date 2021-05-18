@@ -13,7 +13,7 @@ const createPlaylist = (playlist) => ({
     payload: playlist
 })
 
-const deletePlaylist = () => ({
+const deletePlaylist = (id) => ({
     type: DELETE_PLAYLIST
 })
 
@@ -49,7 +49,10 @@ export const createPlaylistThunk = (newPlaylist) => async (dispatch) => {
 
 export const deletePlaylistThunk = (id) => async (dispatch) => {
     const response = await fetch(`/api/playlists/${id}`, {method: "DELETE"})
-    dispatch(deletePlaylist())
+    if (!response.ok) {
+        throw response
+    }
+    dispatch(deletePlaylist(id))
     return null;
 }
 

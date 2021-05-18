@@ -28,14 +28,14 @@ function DeletePlaylist(props) {
         setDeleteClicked(id)
     }
 
-    const deletePlaylist = async (e, id) => {
+    const deletePlaylistAlbums = async (e, id) => {
         e.preventDefault()
-        setDeleteClicked(0)
 
         await dispatch(deletePlaylistAlbumsThunk(id))
         await dispatch(deletePlaylistThunk(id))
-        dispatch(getPlaylistsThunk(sessionUser.id))
         dispatch(getPlaylistAlbumsThunk(id))
+        dispatch(getPlaylistsThunk(sessionUser.id))
+        setDeleteClicked(0)
         // props.setPlaylistAlbumsDisplay(false)
     }
 
@@ -45,7 +45,7 @@ function DeletePlaylist(props) {
         {deleteClicked !== 0  ?
             <div className="deletePlaylistConfirmationContainer">
                 <p>{`Are you sure you want to delete "${props.playlists.find(playlist => playlist.id === deleteClicked).name}" playlist?`}</p>
-                <button onClick={e => deletePlaylist(e, deleteClicked)}>Yes</button>
+                <button onClick={e => deletePlaylistAlbums(e, deleteClicked)}>Yes</button>
                 <button onClick={() => setDeleteClicked(0) }>No</button>
             </div>
         : null}

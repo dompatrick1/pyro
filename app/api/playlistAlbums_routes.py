@@ -20,6 +20,7 @@ def delete_playlistAlbum(id):
     playlistAlbum = PlaylistAlbum.query.get(id)
     db.session.delete(playlistAlbum)
     db.session.commit()
+    return {}
 
 @playlistAlbum_routes.route('delete/playlist/<playlistId>', methods=["DELETE"])
 def delete_playlistAlbums(playlistId):
@@ -27,3 +28,4 @@ def delete_playlistAlbums(playlistId):
     for playlistAlbum in playlistAlbums:
         db.session.delete(playlistAlbum)
     db.session.commit()
+    return {}
