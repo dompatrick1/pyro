@@ -12,23 +12,15 @@ body, html {
 
 .mainContainer {
     display: grid;
-    /* margin-left: 20px;
-    margin-right: 20px; */
     grid-template-columns: 1fr 2.6fr 1fr;
     grid-template-rows: 1fr, 2fr, 1fr;
     grid-template-areas:
         "user topAlbums session"
         "playlists inner friends"
         "player player player";
-    /* height: 100vh; */
+
 }
 
-/* @media screen and (max-width: 1020px) {
-    .mainContainer {
-      float: none;
-      width: auto;
-    }
-  } */
 
 .userNameLogout {
     grid-area: session;
@@ -94,6 +86,29 @@ body, html {
       padding-bottom: 4px;
       padding-top: 4px;
       font-size: 17px;
+      cursor: pointer;
+      animation: glowing 6000ms ease-in-out;
+  }
+
+  @keyframes glowing {
+    0% {
+      /* background-color: #000000; */
+      color: white;
+      box-shadow: 0 0 10px #ffffff;
+      border-radius: 20px;
+    }
+    50% {
+      /* background-color: #000000; */
+      color: white;
+      box-shadow: 0 0 30px #ffffff;
+      border-radius: 20px;
+    }
+    100% {
+      /* background-color: #000000; */
+      color: white;
+      box-shadow: 0 0 5px #ffffff;
+      border-radius: 20px;
+    }
   }
 
   .displaySearchButton:hover {
