@@ -84,10 +84,11 @@ function UsersList() {
                     {lastPlays.filter(lastPlay => lastPlay.userId === user.id).map(play => {
                       return (
                         <div className="followingContainer">
-                          <div>
+                          <div className="lastPlayContainer">
                             <button className="followLastPlayButton" onClick={e => selectAlbum(e, albums[play.albumId - 1].id)}>
                               <img className="followImage" src={`${IMAGE_FOLDER}${albums[play.albumId - 1].image}`} alt={albums[play.albumId - 1].image}></img>
                             </button>
+                            <button className="after" onClick={e => selectAlbum(e, albums[play.albumId - 1].id)}><i class="fa fa-play"></i></button>
                           </div>
                           <div className="followInfoContainer">
                             <p className="lastListenText">Last Listen:</p>

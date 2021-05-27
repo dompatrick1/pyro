@@ -2,13 +2,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0,0,0,.85);
     border-radius: 5px;
-    margin-left: 1px;
-    margin-right: 1px;
+    margin-left: 12px;
+    margin-right: 12px;
     padding-top: 2px;
     padding-bottom: 2px;
     margin-top: 5px;
+    margin-bottom: 10px;
+    cursor:pointer;
 }
 
 
@@ -57,10 +59,12 @@
 }
 
 .searchAddToPlaylist select {
-    background-color: black;
+    background-color: rgb(56, 56, 56);
+    border-radius: 5px;
     color: rgb(218, 218, 218);
     border: none;
     font-size: 12px;
+    cursor:pointer;
     /* margin-bottom: 5px; */
 }
 
@@ -71,4 +75,26 @@
 .individualSearchedAlbum:hover {
     transform: scale(1.009);
     background-color: black;
+}
+
+.searchAlbumImageContainer .after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    display: none;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(0, 0, 0) 5px 0 15px;
+    font-size: 40px;
+}
+
+.searchAlbumImageContainer:hover .after {
+    display: block;
+    /* background: rgba(0, 0, 0, .4); */
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    margin-top: 45px;
+    border-radius: 100%;
 }

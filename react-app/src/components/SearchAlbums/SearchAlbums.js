@@ -117,7 +117,10 @@ function SearchAlbums(props) {
                                 <div className="individualSearchedAlbum">
                                     <button  onClick={e => albumSelect(e, album.id)}>
                                         <div className="searchAlbumInfo">
-                                            <img className="albumImage" src={`${IMAGE_FOLDER}${album.image}`} alt={`${IMAGE_FOLDER}${album.image}`}></img>
+                                            <div className="searchAlbumImageContainer">
+                                                <img className="albumImage" src={`${IMAGE_FOLDER}${album.image}`} alt={`${IMAGE_FOLDER}${album.image}`}></img>
+                                                <div className="after"><i class="fa fa-play"></i></div>
+                                            </div>
                                             <p>{album.title}</p>
                                             <p>{album.artist}</p>
                                         </div>

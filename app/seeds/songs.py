@@ -282,6 +282,318 @@ def seed_songs():
             songTitle="Restless Farewell",
             song="https://pyro-songs.s3.us-east-2.amazonaws.com/Restless-Farewell.mp3", albumId=7
         ),
+        Song(
+            songTitle="Move Over",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Move-Over.mp3", albumId=8
+        ),
+        Song(
+            songTitle="Cry Baby",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Cry-Baby.mp3", albumId=8
+        ),
+        Song(
+            songTitle="A Woman Left Lonely",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/A-Woman.mp3", albumId=8
+        ),
+        Song(
+            songTitle="Half Moon",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Half-Moon.mp3", albumId=8
+        ),
+        Song(
+            songTitle="Buried Alive In The Blue",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Buried-Alive-In-The-Blues.mp3", albumId=8
+        ),
+        Song(
+            songTitle="My Baby",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/My-Baby.mp3", albumId=8
+        ),
+        Song(
+            songTitle="Me and Bobby McGee",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Me-And-Bobby-McGee.mp3", albumId=8
+        ),
+        Song(
+            songTitle="Mercedes Benz",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Mercedes-Benz.mp3", albumId=8
+        ),
+        Song(
+            songTitle="Trust Me",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Trust-Me.mp3", albumId=8
+        ),
+        Song(
+            songTitle="Get It While You Can",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Get-It-While-You-Can.mp3", albumId=8
+        ),
+        Song(
+            songTitle="Black Dog",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Black-Dog.mp3", albumId=9
+        ),
+        Song(
+            songTitle="Rock and Roll",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Rock-and-Roll.mp3", albumId=9
+        ),
+        Song(
+            songTitle="The Battle of Evermore",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/The-Battle-of-Evermore.mp3", albumId=9
+        ),
+        Song(
+            songTitle="Stairway to Heaven",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Stairway-to-Heaven.mp3", albumId=9
+        ),
+        Song(
+            songTitle="Misty Mountain Hop",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Misty-Mountain-Hop.mp3", albumId=9
+        ),
+        Song(
+            songTitle="Four Sticks",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Four-Sticks.mp3", albumId=9
+        ),
+        Song(
+            songTitle="Going to California",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Going-to-California.mp3", albumId=9
+        ),
+        Song(
+            songTitle="When the Levee Breaks",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/When-the-Levee-Breaks.mp3", albumId=9
+        ),
+        Song(
+            songTitle="Don't Stop 'Til You Get Enough",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Dont-Stop-Till-You-Get-Enough.mp3", albumId=10
+        ),
+        Song(
+            songTitle="Rock With You",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Rock-With-You.mp3", albumId=10
+        ),
+        Song(
+            songTitle="Workin' Day and Night",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Workin-Day-And-Night.mp3", albumId=10
+        ),
+        Song(
+            songTitle="Get on the Floor",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Get-On-The-Floor.mp3", albumId=10
+        ),
+        Song(
+            songTitle="Off the Wall",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Off-The-Wall.mp3", albumId=10
+        ),
+        Song(
+            songTitle="Girlfriend",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Girlfriend.mp3", albumId=10
+        ),
+        Song(
+            songTitle="She's Out of My Life",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Shes-Out-Of-My-Life.mp3", albumId=10
+        ),
+        Song(
+            songTitle="I Can't Help It",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/I-Cant-Help-It.mp3", albumId=10
+        ),
+        Song(
+            songTitle="It's the Falling in Love",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Its-the-Falling-in-Love.mp3", albumId=10
+        ),
+        Song(
+            songTitle="Burn This Disco Out",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Burn-This-Disco-Out.mp3", albumId=10
+        ),
+        Song(
+            songTitle="Baba O'Riley",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Baba-O-Riley.mp3", albumId=11
+        ),
+        Song(
+            songTitle="Bargain",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Bargain.mp3", albumId=11
+        ),
+        Song(
+            songTitle="Love Ain't for Keepin'",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Love-Aint-for-Keeping.mp3", albumId=11
+        ),
+        Song(
+            songTitle="My Wife",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/My-Wife.mp3", albumId=11
+        ),
+        Song(
+            songTitle="The Song Is Over",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/The-Song-is-Over.mp3", albumId=11
+        ),
+        Song(
+            songTitle="Getting In Tune",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Getting-in-Tune.mp3", albumId=11
+        ),
+        Song(
+            songTitle="Goin' Mobile",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Going-Mobile.mp3", albumId=11
+        ),
+        Song(
+            songTitle="Behind Blue Eyes",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Behind-Blue-Eyes.mp3", albumId=11
+        ),
+        Song(
+            songTitle="Won't Get Fooled Again",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Wont-Get-Fooled-Again.mp3", albumId=11
+        ),
+        Song(
+            songTitle="War Pigs",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/War-Pigs.mp3", albumId=12
+        ),
+        Song(
+            songTitle="Paranoid",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Paranoid.mp3", albumId=12
+        ),
+        Song(
+            songTitle="Planet Caravan",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Planet-Caravan.mp3", albumId=12
+        ),
+        Song(
+            songTitle="Iron Man",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Iron-Man.mp3", albumId=12
+        ),
+        Song(
+            songTitle="Electric Funeral",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Electric-Funeral.mp3", albumId=12
+        ),
+        Song(
+            songTitle="Hand of Doom",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Hand-of-Doom.mp3", albumId=12
+        ),
+        Song(
+            songTitle="Rat Salad",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Rat-Salad.mp3", albumId=12
+        ),
+        Song(
+            songTitle="Fairies Wear Boots",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Jack-the-Stripper-Fairies-Wear-Boots.mp3", albumId=12
+        ),
+        Song(
+            songTitle="Wasted Words",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Wasted-Words.mp3", albumId=13
+        ),
+        Song(
+            songTitle="Ramblin' Man",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Ramblin-Man.mp3", albumId=13
+        ),
+        Song(
+            songTitle="Come and Go Blues",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Come-and-Go-Blues.mp3", albumId=13
+        ),
+        Song(
+            songTitle="Jelly Jelly",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Jelly-Jelly.mp3", albumId=13
+        ),
+        Song(
+            songTitle="Southbound",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Southbound.mp3", albumId=13
+        ),
+        Song(
+            songTitle="Jessica",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Jessica.mp3", albumId=13
+        ),
+        Song(
+            songTitle="Pony Boy",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Pony-Boy.mp3", albumId=13
+        ),
+        Song(
+            songTitle="Breathe",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Breathe.mp3", albumId=14
+        ),
+        Song(
+            songTitle="On the Run",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/On-The-Run.mp3", albumId=14
+        ),
+        Song(
+            songTitle="Time",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Time.mp3", albumId=14
+        ),
+        Song(
+            songTitle="The Great Gig in the Sky",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/The-Great-Gig-In-The-Sky.mp3", albumId=14
+        ),
+        Song(
+            songTitle="Money",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Money.mp3", albumId=14
+        ),
+        Song(
+            songTitle="Us and Them",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Us-And-Them.mp3", albumId=14
+        ),
+        Song(
+            songTitle="Any Colour You Like",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Any-Colour-You-Like.mp3", albumId=14
+        ),
+        Song(
+            songTitle="Brain Damage",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Brain-Damage.mp3", albumId=14
+        ),
+        Song(
+            songTitle="Eclipse",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Eclipse.mp3", albumId=14
+        ),
+        Song(
+            songTitle="Toys in the Attic",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Toys-In-The-Attic.mp3", albumId=15
+        ),
+        Song(
+            songTitle="Uncle Salty",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Uncle-Salty.mp3", albumId=15
+        ),
+        Song(
+            songTitle="Adam's Apple",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Adams-Apple.mp3", albumId=15
+        ),
+        Song(
+            songTitle="Walk This Way",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Walk-This-Way.mp3", albumId=15
+        ),
+        Song(
+            songTitle="Big Ten Inch Record",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Big-Ten-Inch-Record.mp3", albumId=15
+        ),
+        Song(
+            songTitle="Sweet Emotion",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Sweet-Emotion.mp3", albumId=15
+        ),
+        Song(
+            songTitle="No More No More",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/No-More.mp3", albumId=15
+        ),
+        Song(
+            songTitle="Round and Round",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Round-and-Round.mp3", albumId=15
+        ),
+        Song(
+            songTitle="You See Me Crying",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/You-See-Me-Crying.mp3", albumId=15
+        ),
+        Song(
+            songTitle="I Ain't the One",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/I-Aint-The-One.mp3", albumId=16
+        ),
+        Song(
+            songTitle="Tuesday's Gone",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Tuesdays-Gone.mp3", albumId=16
+        ),
+        Song(
+            songTitle="Gimme Three Steps",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Gimme-Three-Steps.mp3", albumId=16
+        ),
+        Song(
+            songTitle="Simple Man",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Simple-Man.mp3", albumId=16
+        ),
+        Song(
+            songTitle="Things Goin' On",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Things-Goin-On.mp3", albumId=16
+        ),
+        Song(
+            songTitle="Mississippi Kid",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Mississippi-Kid.mp3", albumId=16
+        ),
+        Song(
+            songTitle="Poison Whiskey",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Poison-Whiskey.mp3", albumId=16
+        ),
+        Song(
+            songTitle="Free Bird",
+            song="https://pyro-songs.s3.us-east-2.amazonaws.com/Free-Bird.mp3", albumId=16
+        ),
     ]
 
     db.session.add_all(songs)

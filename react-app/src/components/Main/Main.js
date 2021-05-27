@@ -76,7 +76,7 @@ function Main(props) {
             </div>
         )
     } else {
-        inner = (<p>Click and album to begin playing</p>)
+        inner = (<p>Click an album to begin playing</p>)
     }
 
     let playlistAlbumsList = []
@@ -237,6 +237,7 @@ function Main(props) {
                             <div>
                                 <button className="playlistAlbumButton" onClick={e => albumSelect(e, album.id)}>
                                     <img className="albumImage" src={`${IMAGE_FOLDER}${album.image}`} alt={`${IMAGE_FOLDER}${album.image}`}></img>
+                                    <div className="after"><i class="fa fa-play"></i></div>
                                     <text>{album.title}</text>
                                     <text>{`by ${album.artist}`}</text>
                                 </button>
