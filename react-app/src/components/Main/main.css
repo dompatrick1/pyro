@@ -196,6 +196,10 @@ body, html {
     border: 5px solid black;
 }
 
+/* .playingAlbumImage:hover {
+    display: none;
+} */
+
 .playlistCrateImage {
     width: 35px;
     height: 35px;
@@ -365,6 +369,7 @@ body, html {
     color: rgb(224, 224, 224);
     border: none;
     font-size: 12px;
+    cursor:pointer;
 }
 
 .playingAlbumAddPlaylist option {
@@ -423,4 +428,55 @@ body, html {
     display: flex;
     justify-content: center;
     border-radius: 100%;
+}
+
+.songListTitles {
+    /* position:static; */
+    /* display:list-item; */
+    width: 100%;
+    height: 100%;
+    display: none;
+    color: rgb(255, 255, 255);
+    /* margin-bottom: 1000px; */
+    /* text-shadow: rgb(0, 0, 0) 5px 0 15px; */
+    /* margin-top: 50px; */
+    font-size: 12px;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    border-radius: 20px;
+}
+
+.alignCurrentPlaying:hover .songListTitles {
+    /* display: block; */
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding-top: 10px; */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* margin-top: 0;
+    padding-top: 0; */
+    /* border-radius: 100%; */
+    list-style: none;
+    /* margin-bottom: 50px; */
+    /* background-color: black; */
+}
+.imageAndSongs {
+    position: relative;
+    display: inline-block;
+}
+
+.songListTitles li {
+    background-color:rgb(70, 70, 70);
+    width: 235px;
+    /* border-bottom: 1px solid black; */
+    padding-top: 5px;
+    height: 100%;
+    max-height: 100%;
+    /* min-height: 100%; */
 }

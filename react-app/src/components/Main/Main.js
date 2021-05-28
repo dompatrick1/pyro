@@ -26,6 +26,7 @@ function Main(props) {
     const plays = Object.values(useSelector(state => state.plays))
     const playlists = Object.values(useSelector(state => state.playlists))
     const playlistAlbums = Object.values(useSelector(state => state.playlistAlbums))
+    let songs = Object.values(useSelector(state => state.songs))
     const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
     const [searchOn, setSearchOn] = useState(false)
     const [playlistAlbumsDisplay, setPlaylistAlbumsDisplay] = useState(false)
@@ -58,7 +59,18 @@ function Main(props) {
             <div className="currentPlayingAlbum">
                 {albums[selectAlbumId - 1] ?
                     <div className="alignCurrentPlaying">
-                        <img className="playingAlbumImage" src={`${IMAGE_FOLDER}${albums[selectAlbumId - 1].image}`} alt={albums[selectAlbumId - 1].image}></img>
+                        <div className="imageAndSongs">
+                            <img className="playingAlbumImage" src={`${IMAGE_FOLDER}${albums[selectAlbumId - 1].image}`} alt={albums[selectAlbumId - 1].image}></img>
+                            <div className="songListTitles">
+                                {songs.length ?
+                                    songs.map(song => {
+                                        return (
+                                            <li >{song.songTitle}</li>
+                                        )
+                                    })
+                                : null}
+                            </div>
+                        </div>
                         <h2>{albums[selectAlbumId - 1].title}</h2>
                         <h3>{albums[selectAlbumId - 1].artist}</h3>
                     </div>
