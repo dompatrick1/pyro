@@ -102,15 +102,16 @@ function Player() {
                 {songs.length ?
                 <div className="audioContainer">
                     <audio id="audio1" src={needleSound}></audio>
-
-                    <audio
-                        id="audio"
-                        controls
-                        controlsList="nodownload"
-                        src={songs[songIndex].song}>
-                        Your browser does not support the
-                        <code>audio</code> element.
-                    </audio>
+                    {songs[songIndex] ?
+                        <audio
+                            id="audio"
+                            controls
+                            controlsList="nodownload"
+                            src={songs[songIndex].song}>
+                            Your browser does not support the
+                            <code>audio</code> element.
+                        </audio>
+                    : null}
                 </div>
                 : <audio controls id="audio"></audio>}
         </div>
