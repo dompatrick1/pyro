@@ -23,3 +23,23 @@
     color: white;
     border-radius: 5px;
 }
+
+.socialLinks {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+}
+
+.socialLinks a {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    text-decoration: none;
+    color: rgb(168, 168, 168);
+    /* font-size: 20px; */
+}
+
+.socialLinks span {
+    margin-left: 3px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

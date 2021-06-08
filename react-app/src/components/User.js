@@ -7,6 +7,7 @@ import "./user.css"
 function User() {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
+  const IMAGE_FOLDER = process.env.NODE_ENV === 'production' ? '/static' : ''
 
 
   useEffect(() => {
@@ -26,6 +27,11 @@ function User() {
 
   return (
     <div className="userWelcome">
+      <div className="socialLinks">
+        <a href="https://github.com/dompatrick1" class="fa fa-github"><span >Github</span></a>
+        <a href="https://www.linkedin.com/in/dominic-patrick-935781113/" class="fa fa-linkedin"><span class="label">Linkedin</span></a>
+        <a href="https://dompatrick1.github.io/" class="portfolio"><span >Portfolio</span></a>
+      </div>
       <strong>Welcome,</strong>
       <strong>{user.username}</strong>
       <LogoutButton/>
