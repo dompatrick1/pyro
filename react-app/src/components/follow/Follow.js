@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux"
 import {createFollowingThunk, deleteFollowThunk, getFollowsThunk} from "../../store/following"
 import "./follow.css"
@@ -38,7 +38,7 @@ function Follow(props) {
         })
         await dispatch(deleteFollowThunk(id))
         dispatch(getFollowsThunk(sessionUser.id))
-        // props.setSearchTerm("")
+
       }
 
     return (
